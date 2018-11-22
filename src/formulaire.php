@@ -10,7 +10,7 @@
         <div class="container grey">
             <h2>Formulaire d'inscription :</h2>
             <br>
-            <form action="cible.php" method="POST">
+            <form action="new_user.php" method="POST">
                 <div class="form-group row">  
                     <label for="prenom" class="col-sm-2 col-form-label">Prénom : </label>
                     <div class="col-sm-10">
