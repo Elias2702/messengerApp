@@ -1,9 +1,9 @@
 <?php
 
-
-$dsn = 'mysql:host=mysql;dbname=messenger';
+require_once 'db_param.php';
+/*$dsn = 'mysql:host=mysql;dbname=messenger';
 $user_db = 'root';
-$pass_db = 'root';
+$pass_db = 'root';*/
 
 class user_cl {
     
@@ -42,3 +42,6 @@ class user_cl {
     } catch (Exception $ex) {
         echo 'ERROR DBASE CONNECTION '.$ex->getMessage();
     }
+    
+    header("Refresh: 2; url=user_home.php");
+    echo 'Registration Successful.';
