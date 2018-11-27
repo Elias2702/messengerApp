@@ -1,7 +1,7 @@
 <?php
 session_start();
 // Store Session Data
-$_SESSION['login_user']= $_POST['user_name'];
+echo $_SESSION['id'];
 //print_r($_SESSION['login_user']);
 ?>
 <!DOCTYPE html>
@@ -21,57 +21,66 @@ and open the template in the editor.
 
             //require_once 'ins_conv_msg.php';      
             $cur_mem = $_POST['user_name'];
-            print_r ("current user is : ".$_SESSION['login_user']);
-            ?>
-        <script>
-            function js_send() {
-                    var dsp = document.getElementById('msg_dsp');
-                    var new_opt = document.createElement("OPTION");
-                    new_opt.innerHTML = document.getElementById('crt_msg').value;
-                    dsp.appendChild(new_opt);
-                    document.getElementById('crt_msg').value ="";
+            print_r ("current user is : ".$_SESSION['id']);
+    ?>
+    
+    <!--
+    <script>
+    
+        function js_send() {
+
+            var dsp = document.getElementById('msg_dsp');
+            var new_opt = document.createElement("OPTION");
+            new_opt.innerHTML = document.getElementById('crt_msg').value;
+            dsp.appendChild(new_opt);
+            document.getElementById('crt_msg').value ="";
             }
-        </script>
-        
-       <?php
-           
+
+    </script>
+    -->    
+       <?php           
             try {
                 $db_user = new PDO ($dsn, $user_db, $pass_db);
                 $db_user -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $q_user="SELECT id, prenom, nom, sexe, pseudo, email, pass FROM messenger.user;";
                 $result = $db_user -> query("$q_user")->fetchAll();
-                //print_r($result);
+                //print_r($result);                
+        ?>
                 
-                ?>
-                <form action="start_conv.php" method="POST" target="message_display_iframe" >
-                        <input type='text' name='<?php $cur_mem; ?>' id='<?php $cur_mem; ?>'>
+            <form action="start_conv.php" method="POST" target="message_display_iframe" >
+                <input type='text' name='<?php $cur_mem; ?>' id='<?php $cur_mem; ?>'>
+        
+        <!--                
         <script>
             //document.getElementById('cur_usr').value = $cur_mem;
         </script>
-                        <div style="display:flex;">
-                        <legend><p>List of Members</p>
-                        <select size="10" name="member_sel" style="width: 250px;">
-                        <option><table><tr><th><td>id </td><td>| prenom |</td><td>nom </td></th></tr></table></option>
-                            <?php foreach ($result as $row) {
-                                    echo "<option>". $row["id"].  "<br> "."</option>";   //"<br> id: "." - Name: ". $row["prenom"]. "   " . $row["nom"] . " ". $row["sexe"] . " ". $row["pseudo"] . " ". $row["email"] . " ". $row["pass"] .
-                            } ;?>
-                        </select>
-                        </legend>
+        -->
 
-                        <legend><p>list of conversations</p>
-                        <select size='10' name='conv_dsp' style='width: 250px;'>
-                        <option><table><tr><th><td>id </td><td>| prenom |</td><td>nom </td></th></tr></table></option>
-                            <?php foreach ($result as $row) {                                      
-                                      echo '<option>'.'<br>'. $row['id'].'<br>'.'</option>'; //'<br>'. 'id: '. $row['id']. ' - number of participants: '. $row['num_particip']. '   '. ' - creation time: '. $row['creation_time'] . ' - id of participants: '. $row['particip_id'] .
-                                       } ?>
-                        </select>
-                        </legend>
-                        </div>
-                        <?php                
-                        } catch (Exception $ex) {
-                            echo 'ERROR DBASE CONNECTION '.$ex->getMessage();
-                        }                       
-                    ?>
+                <div style="display:flex;">
+                <legend><p>List of Members</p>
+                <select size="10" name="member_sel" style="width: 250px;">
+                <option><table><tr><th><td>id </td><td>| prenom |</td><td>nom </td></th></tr></table></option>
+                    <?php foreach ($result as $row) {
+                            echo "<option>". $row["id"] . $row["prenom"] . "<br> "."</option>";   //"<br> id: "." - Name: ". $row["prenom"]. "   " . $row["nom"] . " ". $row["sexe"] . " ". $row["pseudo"] . " ". $row["email"] . " ". $row["pass"] .
+                    } ;?>
+                </select>
+                </legend>
+
+                <legend><p>list of conversations</p>
+                <select size='10' name='conv_dsp' style='width: 250px;'>
+                <option><table><tr><th><td>id </td><td>| prenom |</td><td>nom </td></th></tr></table></option>
+                    <?php foreach ($result as $row) {                                      
+                                echo '<option>'.'<br>'. $row['id'].'<br>'.'</option>'; //'<br>'. 'id: '. $row['id']. ' - number of participants: '. $row['num_particip']. '   '. ' - creation time: '. $row['creation_time'] . ' - id of participants: '. $row['particip_id'] .
+                                } ?>
+                </select>
+                </legend>
+                </div>
+        
+        <?php                
+            } catch (Exception $ex) {
+                echo 'ERROR DBASE CONNECTION '.$ex->getMessage();
+            }                       
+        ?>
                     <p><?php echo $_POST['member_sel'] ;?></p>
                         <br>
                         <div><input type="submit" value="Start Conversation"></div>

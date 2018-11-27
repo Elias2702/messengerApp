@@ -3,7 +3,9 @@
 
 // START insert the new message into mesage table (NOT covn reg!!!)
 $owner = 1; //$_POST['sessionowner'];
+
 $conv_id = $_POST['conv_dsp']; // if the conversation already exists (i.e. registered)
+var_dump($conv_id);
 //$new_conv_id = $db_conv->lastInsertId();//if new conversation
 $msg_crt_time =  date("Y-m-d H:i:s");
 $msg_cnt = $_POST['crt_msg'];
