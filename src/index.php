@@ -23,10 +23,11 @@ and open the template in the editor.
                echo "value='" . $_SESSION['email'] ."'";
             }
             ?>>
-
+            <br><br>
             <input type='password' name='pass' placeholder='Enter you user password'>
-
-            <input type='submit' value='LOGIN'>       
+            <br><br>
+            <input type='submit' value='LOGIN'>
+            <br><br>        
 
         </form>
 
