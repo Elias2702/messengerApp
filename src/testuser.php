@@ -11,6 +11,7 @@ require_once 'db_param.php';
 // Retrieves CONST
 $pass = $_POST['pass'];
 $email = $_POST['email'];
+$_SESSION['email'] = $email;
 
 try {
     // Set connection to the database
@@ -29,7 +30,6 @@ try {
             $_SESSION['nom'] = $row['nom'];
             $_SESSION['sexe'] = $row['sexe'];
             $_SESSION['pseudo'] = $row['pseudo'];
-            $_SESSION['email'] = $email;
             $_SESSION['pass'] = $row['pass'];            
         }
     }
@@ -39,8 +39,7 @@ try {
         echo 'not a valid email';
     } elseif($pass == $passcheck) {
         header("Refresh: 2; url=user_home.php");
-        echo 'pass ok';
-        echo $email; 
+        echo 'Hello ' . $_SESSION['pseudo'];
     } else {
         header("Refresh: 2; url=index.php");
         echo 'wrong password';
