@@ -1,4 +1,5 @@
 <?php
+session_start();
     require_once 'db_param.php';
 
     $conv_id = $_POST['conv_dsp']; 

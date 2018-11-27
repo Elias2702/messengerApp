@@ -2,7 +2,7 @@
 session_start();
 // Store Session Data
 $_SESSION['login_user']= $_POST['user_name'];
-//print_r($_SESSION['login_user']);
+print_r($_SESSION['login_user']);
 ?>
 <!DOCTYPE html>
 <!--
@@ -24,12 +24,12 @@ and open the template in the editor.
             print_r ("current user is : ".$_SESSION['login_user']);
             ?>
         <script>
-            function js_send() {
+          /*  function js_send() {
                     var dsp = document.getElementById('msg_dsp');
                     var new_opt = document.createElement("OPTION");
                     new_opt.innerHTML = document.getElementById('crt_msg').value;
                     dsp.appendChild(new_opt);
-                    document.getElementById('crt_msg').value ="";
+                    document.getElementById('crt_msg').value ="";*/
             }
         </script>
         
@@ -44,10 +44,7 @@ and open the template in the editor.
                 
                 ?>
                 <form action="start_conv.php" method="POST" target="message_display_iframe" >
-                        <input type='text' name='<?php $cur_mem; ?>' id='<?php $cur_mem; ?>'>
-        <script>
-            //document.getElementById('cur_usr').value = $cur_mem;
-        </script>
+                        
                         <div style="display:flex;">
                         <legend><p>List of Members</p>
                         <select size="10" name="member_sel" style="width: 250px;">
@@ -57,21 +54,37 @@ and open the template in the editor.
                             } ;?>
                         </select>
                         </legend>
-
-                        <legend><p>list of conversations</p>
-                        <select size='10' name='conv_dsp' style='width: 250px;'>
-                        <option><table><tr><th><td>id </td><td>| prenom |</td><td>nom </td></th></tr></table></option>
-                            <?php foreach ($result as $row) {                                      
-                                      echo '<option>'.'<br>'. $row['id'].'<br>'.'</option>'; //'<br>'. 'id: '. $row['id']. ' - number of participants: '. $row['num_particip']. '   '. ' - creation time: '. $row['creation_time'] . ' - id of participants: '. $row['particip_id'] .
-                                       } ?>
-                        </select>
-                        </legend>
-                        </div>
+                                            
+                    
                         <?php                
                         } catch (Exception $ex) {
                             echo 'ERROR DBASE CONNECTION '.$ex->getMessage();
                         }                       
                     ?>
+                    <?php
+                        try {
+                            $db_conv = new PDO ($dsn, $user_db, $pass_db);
+                            $db_conv -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                            $q_conv = "SELECT id, num_particip, creation_time, particip_id FROM messenger.conv_reg;";
+                            $result_cnv_reg = $db_conv -> query("$q_conv")->fetchAll();
+                            ?>
+
+                            <legend><p>list of conversations</p>
+                            <select size='10' name='conv_dsp' style='width: 250px;'>
+                                <option><table><tr><th><td>id </td><td>| prenom |</td><td>nom </td></th></tr></table></option>
+                                        <?php foreach ($result_cnv_reg as $row_cnv_reg) {                                      
+                                                echo '<option>'.'<br>'. $row_cnv_reg['id'].'<br>'.'</option>'; //'<br>'. 'id: '. $row['id']. ' - number of participants: '. $row['num_particip']. '   '. ' - creation time: '. $row['creation_time'] . ' - id of participants: '. $row['particip_id'] .
+                                        // the id from database is stored inside the (option.innerhtml) AND NOT the (selectedIndex) property of <selec>
+                                        } ?>
+                            </select>
+                            </legend>
+                            </div>
+                            <?php                
+                        } catch (Exception $ex) {
+                            echo 'ERROR DBASE CONNECTION '.$ex->getMessage();
+                        }                       
+                    ?>
+                    
                     <p><?php echo $_POST['member_sel'] ;?></p>
                         <br>
                         <div><input type="submit" value="Start Conversation"></div>
