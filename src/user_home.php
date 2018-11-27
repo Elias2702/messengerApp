@@ -22,12 +22,14 @@ and open the template in the editor.
             //require_once 'ins_conv_msg.php';      
             $cur_mem = $_POST['user_name'];
             
-            echo "current user is : " . $_SESSION['pseudo'] . '<br>';
-            echo 'Bonjour ' . $_SESSION['prenom'] . ' ' . $_SESSION['nom'] . '<br>';
-            echo 'sexe : ' . $_SESSION['sexe'] . '<br>';
-            echo ' pseudo : ' . $_SESSION['pseudo'] . '<br>';
+            echo "Hello " . $_SESSION['pseudo'] . '<br><br>';
+            echo 'Your ID is : ' . $_SESSION['id'] . "<br>";
+            echo 'First Name : ' . $_SESSION['prenom'] . '<br>';
+            echo 'Last Name : ' . $_SESSION['nom'] . '<br>';
+            echo 'Sex : ' . $_SESSION['sexe'] . '<br>';
+            echo 'seudo : ' . $_SESSION['pseudo'] . '<br>';
             echo 'email : ' . $_SESSION['email'] . '<br>';
-            echo 'pass : ' . $_SESSION['pass'] . '<br>';
+            echo 'pass : ' . $_SESSION['pass'] . '<br><br>';
 
 
 
