@@ -1,28 +1,6 @@
 <?php
-
-session_start();
-
-require_once 'db_param.php';
-
-/*
-try {
-    $db_user = new PDO ($dsn, $user_db, $pass_db);
-    $db_user -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $q_user="SELECT prenom, nom, pseudo, email FROM messenger.user" ;    
-    $result = $db_user->query($q_user)->fetchAll();
-    
-    foreach ($result as $row) {
-        echo $row['prenom'];
-        echo $row['nom'];
-        echo $row['pseudo'];
-        echo $row['email']; 
-
-    }
-
-} catch (Exception $ex) {
-    echo 'ERROR DBASE CONNECTION '.$ex->getMessage();
-}
-*/
+    session_start();
+    require_once 'db_param.php';
 ?>
 
 <!DOCTYPE html>
