@@ -14,6 +14,19 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <title>User Home</title>
+        <script>
+                    /*function crt_nw_cnv() {
+                        document.forms['main_form'].action = 'send msg.php';
+                        //document.forms['main_form'].submit();
+                            //document.getElementById('send').action = 'send msg.php';
+                            //document.getElementById('send').submit();
+                            document.Write("po po");
+                    }
+
+                    function  get_old_cnv() {
+                        document.forms['main_form'].action = 'get old conv.php';
+                    }*/
+                </script>
         
     </head>
     <body>
@@ -21,19 +34,17 @@ and open the template in the editor.
     <?php require_once 'db_param.php';
 
             //require_once 'ins_conv_msg.php';      
-            $cur_mem = $_POST['user_name'];
+            $cur_mem = $_SESSION['id'];
+            print_r($_SESSION['id']);
             
-            echo "Hello " . $_SESSION['pseudo'] . '<br><br>';
-            echo 'Your ID is : ' . $_SESSION['id'] . "<br>";
-            echo 'First Name : ' . $_SESSION['prenom'] . '<br>';
+            //echo "Hello " . $_SESSION['pseudo'] . '<br><br>';//
+           // echo 'Your ID is : ' . $_SESSION['id'] . "<br>";
+           /*echo 'First Name : ' . $_SESSION['prenom'] . '<br>';
             echo 'Last Name : ' . $_SESSION['nom'] . '<br>';
             echo 'Sex : ' . $_SESSION['sexe'] . '<br>';
             echo 'seudo : ' . $_SESSION['pseudo'] . '<br>';
             echo 'email : ' . $_SESSION['email'] . '<br>';
-            echo 'pass : ' . $_SESSION['pass'] . '<br><br>';
-
-
-
+            echo 'pass : ' . $_SESSION['pass'] . '<br><br>';*/
     ?>
 
 
@@ -46,31 +57,29 @@ and open the template in the editor.
                 //print_r($result);                
         ?>
                 
-            <form action="start_conv.php" method="POST" target="message_display_iframe" >
-                <input type='text' name='<?php $cur_mem; ?>' id='<?php $cur_mem; ?>'>
-        
+                <form action="" name="main_form" method="POST" id="send" target="message_display_iframe" >
+                    <input type='text' name='<?php $cur_mem; ?>' id='<?php $cur_mem; ?>'>
 
+                    <div style="display:flex;">
+                    <legend><p>List of Members</p>
+                    <select size="10" name="member_sel" style="width: 250px;" onClick="crt_nw_cnv();">
+                    <option><table><tr><th><td>id </td><td>| prenom |</td><td>nom </td></th></tr></table></option>
+                        <?php foreach ($result as $row) {
+                                echo "<option>". $row["prenom"] . "<br> "."</option>";   //"<br> id: "." - Name: ". $row["prenom"]. "   " . $row["nom"] . " ". $row["sexe"] . " ". $row["pseudo"] . " ". $row["email"] . " ". $row["pass"] .
+                        } ;?>
+                    </select>
+                    </legend>
 
-                <div style="display:flex;">
-                <legend><p>List of Members</p>
-                <select size="10" name="member_sel" style="width: 250px;">
-                <option><table><tr><th><td>id </td><td>| prenom |</td><td>nom </td></th></tr></table></option>
-                    <?php foreach ($result as $row) {
-                            echo "<option>". $row["id"] . $row["prenom"] . "<br> "."</option>";   //"<br> id: "." - Name: ". $row["prenom"]. "   " . $row["nom"] . " ". $row["sexe"] . " ". $row["pseudo"] . " ". $row["email"] . " ". $row["pass"] .
-                    } ;?>
-                </select>
-                </legend>
-
-                <legend><p>list of conversations</p>
-                <select size='10' name='conv_dsp' style='width: 250px;'>
-                <option><table><tr><th><td>id </td><td>| prenom |</td><td>nom </td></th></tr></table></option>
-                    <?php foreach ($result as $row) {                                      
-                                echo '<option>'.'<br>'. $row['id'].'<br>'.'</option>'; //'<br>'. 'id: '. $row['id']. ' - number of participants: '. $row['num_particip']. '   '. ' - creation time: '. $row['creation_time'] . ' - id of participants: '. $row['particip_id'] .
-                                } ?>
-                </select>
-                </legend>
-                </div>
-        
+                    <legend><p>list of conversations</p>
+                    <select size='10' name='conv_dsp' style='width: 250px;' onClick="get_old_cnv();">
+                    <option><table><tr><th><td>id </td><td>| prenom |</td><td>nom </td></th></tr></table></option>
+                        <?php foreach ($result as $row) {                                      
+                                    echo '<option>'.'<br>'.  $row['id'] .'<br>'.'</option>'; //'<br>'. 'id: '. $row['id']. ' - number of participants: '. $row['num_particip']. '   '. ' - creation time: '. $row['creation_time'] . ' - id of participants: '. $row['particip_id'] .
+                                    } ?>
+                    </select>
+                    </legend>
+                    </div>
+            
         <?php                
             } catch (Exception $ex) {
                 echo 'ERROR DBASE CONNECTION '.$ex->getMessage();
@@ -96,12 +105,14 @@ and open the template in the editor.
                         <br>
                         <div><input type='text' name='crt_msg' id='crt_msg'></div>
                         <br>
-                        <div><button type='submit' name='send' value='' formaction='send msg.php'>Send</button></div>
+                        <div><button type='submit' name='send' id='' value='' formaction="send_new.php">Send</button></div>
                         <br>
                         <button> <a href="logout.php">Logout</a></button>
                         <p><?php /* echo $_POST['member_sel'];// select the entire row,and then filter the name and id, and store them in variables*/?></p>
 
 <!--INSERT INTO `conv_reg` (`id`, `num_particip`, `creation_time`, `particip_id`) VALUES ('4', '3', '2018-11-07 00:00:00', '5');  -->                          
                 </form>
+
+                
     </body>
 </html>

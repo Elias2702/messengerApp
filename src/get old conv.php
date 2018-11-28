@@ -2,7 +2,7 @@
 session_start();
     require_once 'db_param.php';
 
-    $conv_id = $_POST['conv_dsp']; 
+    $conv_id = $_POST['conv_dsp']; //$_SESSION['conv_reg_id']
 // GET MESSAGES that belong ONLY to the current conversation
 try {
     $db_msg = new PDO ($dsn, $user_db, $pass_db);
