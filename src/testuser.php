@@ -9,9 +9,15 @@ session_start();
 require_once 'db_param.php';
 
 // Retrieves CONST
-$pass = $_POST['pass'];
 $email = $_POST['email'];
 $_SESSION['email'] = $email;
+
+// Hashes password
+$pass = $_POST['pass'];
+
+
+
+$mailexists = false;
 
 try {
     // Set connection to the database
@@ -24,20 +30,21 @@ try {
     
     foreach ($result as $row) {
         if ($row['email'] == $email) {
-            $passcheck = $row['pass'];
+            $mailexists = true;
+            $pass_check = password_verify($pass, $row['pass']);
             $_SESSION['id'] = $row['id'];
             $_SESSION['prenom'] = $row['prenom'];
             $_SESSION['nom'] = $row['nom'];
             $_SESSION['sexe'] = $row['sexe'];
             $_SESSION['pseudo'] = $row['pseudo'];
-            $_SESSION['pass'] = $row['pass'];            
+            $_SESSION['pass'] = $hash_pass;            
         }
     }
 
-    if($passcheck == null) {
+    if(!$mailexists) {
         header('Refresh: 2; index.php');
         echo 'not a valid email';
-    } elseif($pass == $passcheck) {
+    } elseif($pass_check) {
         header("Refresh: 2; url=user_home.php");
         echo 'Hello ' . $_SESSION['pseudo'];
     } else {

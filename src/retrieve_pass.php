@@ -1,13 +1,12 @@
 <?php
+// This page asks the user to fulfill the email input, then he can click the button to 
+// receive an email with his password
+
 session_start();
 ?>
 
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+
 <html>
     <head>
         <meta charset="UTF-8">
@@ -19,10 +18,13 @@ and open the template in the editor.
         <form action='retrieve_pass_exec.php' method='POST'>
 
             <input type='email' name='email' placeholder='Enter you email' <?php
+            
+            // Autocomplete the input with $_SESSION['email'] if it exists
             if(isset($_SESSION['email'])) {
                echo "value='" . $_SESSION['email'] ."'";
             }
             ?>>
+            
             <br><br>
 
             <input type='submit' value='Send me an email'>

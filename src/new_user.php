@@ -21,8 +21,14 @@ require 'user_class.php';
     $eml      = $_SESSION['email'] ;
     $pass     = $_SESSION['pass'] ;
     
+    $options = [
+        'cost' => 11,
+        'salt' => random_bytes(22),
+    ];
+    $hash_pass = password_hash($pass, PASSWORD_BCRYPT, $options);
+
     // Create new user_cl object 
-    $new_user = new user_cl($pn,$n, $sx, $psd, $eml, $pass);
+    $new_user = new user_cl($pn,$n, $sx, $psd, $eml, $hash_pass);
 
     try {
         // Set connection to the database
@@ -30,7 +36,7 @@ require 'user_class.php';
         $db_user -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         
         // Insert new user into the database
-        $q_user="INSERT INTO `messenger`.`user` (`prenom`,`nom`,`sexe`,`pseudo`,`email`,`pass`) VALUES ('$pn','$n','$sx','$psd','$eml','$pass');";
+        $q_user="INSERT INTO user (prenom, nom , sexe, pseudo, email, pass) VALUES ('$pn','$n','$sx','$psd','$eml','$hash_pass');";
         $db_user -> exec($q_user);    
         
         // Retrieves new user ID to stock in SESSION['id']
