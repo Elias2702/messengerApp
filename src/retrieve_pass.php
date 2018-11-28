@@ -11,12 +11,12 @@ and open the template in the editor.
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>User LOGIN</title>
+        <title>Retrieve Password</title>
     </head>
     <body>
     <br>
         
-        <form action='testuser.php' method='POST'>
+        <form action='retrieve_pass_exec.php' method='POST'>
 
             <input type='email' name='email' placeholder='Enter you email' <?php
             if(isset($_SESSION['email'])) {
@@ -24,18 +24,13 @@ and open the template in the editor.
             }
             ?>>
             <br><br>
-            <input type='password' name='pass' placeholder='Enter you user password'>
-            <br><br>
-            <input type='submit' value='LOGIN'>
+
+            <input type='submit' value='Send me an email'>
             <br>
-            <a href="retrieve_pass.php">password forgotten ?</a>
+            <a href="index.php">Back to Login</a>
             <br>        
 
-        </form>
-
-        <br>
-        <p>Not a member yet ?</p>
-        <button onclick="location.href='formulaire.php'">Register</button>
+        </form>        
 
     </body>
 </html>
