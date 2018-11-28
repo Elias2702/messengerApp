@@ -4,4 +4,7 @@
 
 .errmsg {
     color: red;
+    position: absolute;
+    margin-left : 250px;
+    margin-top : -30px;
 }
