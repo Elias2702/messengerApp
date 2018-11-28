@@ -33,7 +33,7 @@ and open the template in the editor.
 
         <br>
         <p>Not a member yet ?</p>
-        <button><a href="formulaire.php">Register</a></button>
+        <button onclick="location.href='formulaire.php'">Register</button>
 
     </body>
 </html>
