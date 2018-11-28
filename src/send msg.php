@@ -3,8 +3,14 @@ session_start();
     require_once 'db_param.php';
 
 // START insert the new message into mesage table (NOT covn reg!!!)
+<<<<<<< HEAD
 $owner = intval($_SESSION['login_user']); //$_POST['sessionowner'];
+=======
+$owner = 1; //$_POST['sessionowner'];
+
+>>>>>>> 6c349e0a5a03e8235e3bc6f8b7e0a98a81d3a46b
 $conv_id = $_POST['conv_dsp']; // if the conversation already exists (i.e. registered)
+var_dump($conv_id);
 //$new_conv_id = $db_conv->lastInsertId();//if new conversation
 $msg_crt_time =  date("Y-m-d H:i:s");
 $msg_cnt = $_POST['crt_msg'];
