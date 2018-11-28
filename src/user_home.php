@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 // Store Session Data
 $_SESSION['login_user']= $_POST['user_name'];
@@ -14,6 +15,7 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <title>User Home</title>
+        
     </head>
     <body>
     
