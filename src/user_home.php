@@ -57,21 +57,20 @@ and open the template in the editor.
                 //print_r($result);                
         ?>
                 
-                <form action="" name="main_form" method="POST" id="send" target="message_display_iframe" >
-                    <input type='text' name='<?php $cur_mem; ?>' id='<?php $cur_mem; ?>'>
-
+                <form action="send_new.php" name="main_form" method="POST" id="send" target="message_display_iframe" >
+                    
                     <div style="display:flex;">
                     <legend><p>List of Members</p>
-                    <select size="10" name="member_sel" style="width: 250px;" onClick="crt_nw_cnv();">
+                    <select size="10" name="mem_sel" style="width: 250px;" onClick="">
                     <option><table><tr><th><td>id </td><td>| prenom |</td><td>nom </td></th></tr></table></option>
                         <?php foreach ($result as $row) {
-                                echo "<option>". $row["prenom"] . "<br> "."</option>";   //"<br> id: "." - Name: ". $row["prenom"]. "   " . $row["nom"] . " ". $row["sexe"] . " ". $row["pseudo"] . " ". $row["email"] . " ". $row["pass"] .
+                                echo "<option>". $row["pseudo"]. "<br> "."</option>";   //"<br> id: "." - Name: ". $row["prenom"]. "   " . $row["nom"] . " ". $row["sexe"] . " ". $row["pseudo"] . " ". $row["email"] . " ". $row["pass"] .
                         } ;?>
                     </select>
                     </legend>
 
                     <legend><p>list of conversations</p>
-                    <select size='10' name='conv_dsp' style='width: 250px;' onClick="get_old_cnv();">
+                    <select size='10' name='conv_dsp' style='width: 250px;' onClick="">
                     <option><table><tr><th><td>id </td><td>| prenom |</td><td>nom </td></th></tr></table></option>
                         <?php foreach ($result as $row) {                                      
                                     echo '<option>'.'<br>'.  $row['id'] .'<br>'.'</option>'; //'<br>'. 'id: '. $row['id']. ' - number of participants: '. $row['num_particip']. '   '. ' - creation time: '. $row['creation_time'] . ' - id of participants: '. $row['particip_id'] .
@@ -86,14 +85,11 @@ and open the template in the editor.
             }                       
         ?>
                     <p><?php echo $_POST['member_sel'] ;?></p>
+                                                
+                        <div><input type='text' name='crt_msg' id='crt_msg'></div>
                         <br>
-                        <div><input type="submit" value="Start Conversation"></div>
-                           
-                        
-                        <br>
-                        <div><button type='submit' name='send' value='' formaction='get old conv.php'>Show conv</button></div>
-                        <br>
-                        
+                        <div><input type="submit" value="SEND"></div>
+                        <br>        
                         <div><iframe name="message_display_iframe" style="height:250px;">
                             <span>
                                 <select size='10' id='msg_dsp' style="width: 250px;">
@@ -102,10 +98,8 @@ and open the template in the editor.
                             </span>
                         </iframe>
                         </div>
-                        <br>
-                        <div><input type='text' name='crt_msg' id='crt_msg'></div>
-                        <br>
-                        <div><button type='submit' name='send' id='' value='' formaction="send_new.php">Send</button></div>
+                        
+                        <!--div><button type='submit' name='send' id='' value='' formaction="send_new.php">Send</button></div-->
                         <br>
                         <button> <a href="logout.php">Logout</a></button>
                         <p><?php /* echo $_POST['member_sel'];// select the entire row,and then filter the name and id, and store them in variables*/?></p>
