@@ -96,6 +96,9 @@ and open the template in the editor.
                         <div><input type='text' name='crt_msg' id='crt_msg'></div>
                         <br>
                         <div><button type='submit' name='send' value='' formaction='send msg.php'>Send</button></div>
+                        
+                        <a href="inclpicker.php">gotopicker</a>
+                        
                         <br>
                         <button> <a href="logout.php">Logout</a></button>
                         <p><?php /* echo $_POST['member_sel'];// select the entire row,and then filter the name and id, and store them in variables*/?></p>
