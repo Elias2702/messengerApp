@@ -2,6 +2,9 @@
 session_start();
 require_once 'db_param.php';
 $id = $_SESSION['id'];
+$db_img = new PDO ($dsn, $user_db, $pass_db);
+$db_img -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
 // header("Location: img_user_upload.php");
 
 // Le code suivant doit:
@@ -36,8 +39,11 @@ if(isset($_POST['submit'])) {
     if ($imageError === 0) {
         if ($imageSize <= 1000000) {
             $imageNameNew = 'user_id_' . $id . '.' . $imageActualExt;
-            $imageDestination = './uploads/' . $imageNameNew;
+            $imageDestination = 'uploads/' . $imageNameNew;
             move_uploaded_file($imageTmpName, $imageDestination);
+            $sql = "UPDATE user SET picture = $imageDestination WHERE id = $id";
+            $db_img -> exec($sql);
+            header("Location: img_user_upload.php");
         } else {
             echo "Votre fichier est trop gros :-(";
         }

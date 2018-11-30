@@ -1,8 +1,8 @@
 <?php
-// This is the page where the user can see and upload their picture using a form
-// Starts with php, close php, then HTML
-// The HTML form points to img_server_upload.php
     session_start();
+    // This is the page where the user can see and upload their picture using a form
+    // Starts with php, close php, then HTML
+    // The HTML form points to img_server_upload.php
     require_once 'db_param.php';
     //  Retrieve user ID to make a query later:
     $id = $_SESSION['id'];
@@ -24,7 +24,7 @@
     } else {
         $img_path = "uploads/default.jpg";
     }
-    // var_dump($img_path);
+    // // var_dump($img_path);
 ?>
 <!DOCTYPE html>
 <html>
@@ -33,13 +33,18 @@
         <title>User image upload</title>
     </head>
     <body>
-        <p><?php echo $pn; ?>, le chat serait plus sympa avec une petite photo de vous !</p>
+        <p><?php echo $pn; ?>, le chat serait plus sympa avec une petite photo de vous ! <br>
+        Vous pouvez laisser l'image par défaut maintenant et passer à l'étape suivante. Vous pouvez changer votre image à n'importe quel moment dans le menu paramètres de votre compte.</p>
 <!-- Formulaire utilisateur pour uploader une image -->
-<!-- Envoie vers img_test.php pour l'upload du fichier et la mise à jour de la db -->
+<!-- Envoie vers img_server_upload.php pour l'upload du fichier et la mise à jour de la db -->
         <form action='img_server_upload.php' method='POST' enctype="multipart/form-data">
             <input type='file' name='image' accept="image/png, image/jpg, image/jpeg">
             <button type='submit' name='submit'>Envoyer</button>
-            <input type='button' value='Je ferai ça plus tard' formaction='user_home.php'>
+            <!-- <input type='button' value='Etape suivante' formaction='/bio_user_upload.php'> -->
+        </form>
+        <br>
+        <form action='bio_user_upload.php'>
+            <input type='submit' value='Etape suivante' />
         </form>
         <p>Votre photo actuelle  :</p>
         <img src="<?php echo $img_path; ?>">
