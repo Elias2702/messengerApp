@@ -5,33 +5,57 @@ session_start();
 // Require connection params file
 require_once 'db_param.php';
 
-$active_user_id = $_SESSION['id'];
-$active_user_pseudo = $_SESSION['pseudo'];
+$cur_mem_id = $_SESSION['id'];
+$cur_mem_psd = $_SESSION['pseudo'];
 
 try {
     // Set connection to the database
     $db = new PDO ($dsn, $user_db, $pass_db);
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
-    // Extracts id, email & pass
     $q_user="SELECT id, pseudo FROM user";    
     $result = $db->query($q_user)->fetchAll(PDO::FETCH_ASSOC);
+   
+    $id_arr = array('<br>');
+    $psd_arr = array('<br>');
+    $conv_reg_arr = array('<br>');
+    $last_msg_arr = array('<br>');
 
-    $q_conv_reg="SELECT id, particip_id     
-    FROM conv_reg
-    WHERE particip_id = $active_user_id.' '.$row['id']
-    OR particip_id = $row['id'].' '.$active_user_id";
-    
-    $result_2 = $db->query($q_conv_reg)->fetchAll(PDO::FETCH_ASSOC);                 
     
     foreach ($result as $row) {
-        if($row['id'] !== $active_user_id) {
-            echo($row['pseudo']. '</br>');
-            echo result2['id'];
+        if($row['id'] !== $cur_mem_id) {
+            array_push($id_arr, $row['id'] . '<br>');
+            array_push($psd_arr, $row['pseudo'] . '<br>');
+            if($row['id']<$cur_mem_id){
+                $particip_id = $row['id']. " " . $cur_mem_id;
+                echo $particip_id . '<br>';
+            }else{
+                $particip_id = $cur_mem_id . " " . $row['id'];
+                echo $particip_id . '<br>';
+            }
+            $q_conv_reg="SELECT id, particip_id FROM conv_reg WHERE particip_id = '".$particip_id."'";
+            $res2 = $db->query($q_conv_reg)->fetchAll();
+            array_push($conv_reg_arr, $res2[0][0] . '<br>');
+            $res2 = $res2[0][0];
+            $q_msg="SELECT id, conv_reg_id, content FROM messages WHERE conv_reg_id = '".$res2."' ORDER BY id DESC LIMIT 1";
+            $res3 = $db->query($q_msg)->fetchAll();
+            array_push($last_msg_arr, $res3[0][2] . '<br>');
         }
-        
-
     }
+    
+
+    print_r ($id_arr);
+    echo '<br>';
+    echo '<br>';
+    print_r ($psd_arr);
+    echo '<br>';
+    echo '<br>';
+    print_r ($conv_reg_arr);
+    echo '<br>';
+    echo '<br>';
+    print_r ($last_msg_arr);
+
+    
 
 } catch (Exception $ex) {
     echo 'ERROR DBASE CONNECTION '.$ex->getMessage();

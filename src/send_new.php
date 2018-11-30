@@ -5,24 +5,15 @@ session_start();
 require_once 'db_param.php';
 
 $cur_mem = $_SESSION['id'];
-$other_mem_pseudo = $_POST['mem_sel']; //super important : ID of the other user !!!
+$other_mem_id = $_POST['mem_sel']; 
 $msg_crt_time = date("Y-m-d H:i:s");
 $msg_cnt = $_POST['crt_msg'];
 
-
-// extract user_id that corresponds to user pseudo
-try {
-    $db_user = new PDO ($dsn, $user_db, $pass_db);
-    $db_user -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $q_user="SELECT `id` FROM `messenger`.`user` WHERE `pseudo` = '$other_mem_pseudo' ;";
-    $result = $db_user -> query("$q_user")->fetchAll();
-    $other_mem_id = ($result[0][0]);
-} catch (Exception $ex) {                    
-    echo 'ERROR DBASE CONNECTION '.$ex->getMessage();
-} 
-
-$particip_id = strval($cur_mem . " " . $other_mem_id);
-
+if ($cur_mem < $other_mem_id) {
+    $particip_id = strval($cur_mem . " " . $other_mem_id);
+} else {
+    $particip_id = strval($other_mem_id . " " . $cur_mem);
+}
 
 /*  1- connect to db,table { { conv_reg } }.
     2- verify if there is a conversation already between $cur_mem and $other_mem.*/
@@ -71,7 +62,7 @@ try {
 try {
     $q_msg_dsp ="SELECT `content` FROM messenger.messages WHERE `conv_reg_id` = '$cnv_ident' ;";
     $msg_list = $db_msg_ins -> query("$q_msg_dsp")->fetchAll();
-    echo '<select size = "10" style="width:250px;">';
+    
         foreach ($msg_list as $row) {
             echo "<option>". $row["content"] ."<br> "."</option>";   
         }
