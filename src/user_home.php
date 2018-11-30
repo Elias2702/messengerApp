@@ -98,18 +98,8 @@ and open the template in the editor.
                             </span>
                         </iframe>
                         </div>
-<<<<<<< HEAD
-                        <br>
-                        <div><input type='text' name='crt_msg' id='crt_msg'></div>
-                        <br>
-                        <div><button type='submit' name='send' value='' formaction='send msg.php'>Send</button></div>
-                        
-                        <a href="inclpicker.php">gotopicker</a>
-                        
-=======
                         
                         <!--div><button type='submit' name='send' id='' value='' formaction="send_new.php">Send</button></div-->
->>>>>>> 143cb0b42012c761248239e38dca3de78845feab
                         <br>
                         <button> <a href="logout.php">Logout</a></button>
                         <p><?php /* echo $_POST['member_sel'];// select the entire row,and then filter the name and id, and store them in variables*/?></p>
