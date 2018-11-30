@@ -1,9 +1,9 @@
 <?php
 session_start();
 require_once 'db_param.php';
-if(isset($_POST['submit'])) {
-    header("Location: user_home.php");
-}
+$id = $_SESSION['id'];
+// header("Location: img_user_upload.php");
+
 // Le code suivant doit:
 //
 // --- Uploader le fichier (dans un dossier "uploads" sur le serveur), le renommer, et le lier à la db :
@@ -21,4 +21,30 @@ if(isset($_POST['submit'])) {
 // --- Rediriger le visiteur vers soit :
 // La home page avec un message ("image chargée avec succès")
 // La page img_user_upload.php avec un message ("erreur lors du chargement de la page")
+
+if(isset($_POST['submit'])) {
+    $image        = $_FILES['image'];
+
+    $imageName    = $_FILES['image']['name'];
+    $imageTmpName = $_FILES['image']['tmp_name'];
+    $imageSize    = $_FILES['image']['size'];
+    $imageError   = $_FILES['image']['error'];
+
+    $imageExt = explode('.', $imageName);
+    $imageActualExt = strtolower(end($imageExt));
+
+    if ($imageError === 0) {
+        if ($imageSize <= 1000000) {
+            $imageNameNew = 'user_id_' . $id . '.' . $imageActualExt;
+            $imageDestination = './uploads/' . $imageNameNew;
+            move_uploaded_file($imageTmpName, $imageDestination);
+        } else {
+            echo "Votre fichier est trop gros :-(";
+        }
+    } else {
+        echo "Une erreur s'est produite lors du chargement de votre image :-(";
+    }
+}
+
+
 ?>
