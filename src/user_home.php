@@ -2,6 +2,13 @@
 
 session_start();
 
+
+require_once './func php/f_db_con.php';
+$db_cnct = dbase_con();
+require_once './func php/f_get_contacts.php';
+require_once './func php/f_get_convers_reg.php';
+require_once './func php/f_dsp_element.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +38,7 @@ and open the template in the editor.
     </head>
     <body>
     
-    <?php require_once 'db_param.php';
+    <?php //require_once 'db_param.php';
 
             //require_once 'ins_conv_msg.php';      
             $cur_mem = $_SESSION['id'];
@@ -49,12 +56,8 @@ and open the template in the editor.
 
 
        <?php           
-            try {
-                $db_user = new PDO ($dsn, $user_db, $pass_db);
-                $db_user -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $q_user="SELECT id, prenom, nom, sexe, pseudo, email, pass FROM messenger.user;";
-                $result = $db_user -> query("$q_user")->fetchAll();
-                //print_r($result);                
+                $result = get_contacts();
+                                
         ?>
                 
                 <form action="send_new.php" name="main_form" method="POST" id="send" target="message_display_iframe" >
@@ -64,27 +67,30 @@ and open the template in the editor.
                     <select size="10" name="mem_sel" style="width: 250px;" onClick="">
                     <option><table><tr><th><td>id </td><td>| prenom |</td><td>nom </td></th></tr></table></option>
                         <?php foreach ($result as $row) {
-                                echo "<option>". $row["pseudo"]. "<br> "."</option>";   //"<br> id: "." - Name: ". $row["prenom"]. "   " . $row["nom"] . " ". $row["sexe"] . " ". $row["pseudo"] . " ". $row["email"] . " ". $row["pass"] .
+                            dsp_element('option' , $row["pseudo"]);
+                                //echo "<option>". $row["pseudo"]. "<br> "."</option>";   //"<br> id: "." - Name: ". $row["prenom"]. "   " . $row["nom"] . " ". $row["sexe"] . " ". $row["pseudo"] . " ". $row["email"] . " ". $row["pass"] .
                         } ;?>
                     </select>
                     </legend>
-
+        <?php           
+                //$result2 = get_convers_reg();
+                                
+        ?>
                     <legend><p>list of conversations</p>
                     <select size='10' name='conv_dsp' style='width: 250px;' onClick="">
                     <option><table><tr><th><td>id </td><td>| prenom |</td><td>nom </td></th></tr></table></option>
-                        <?php foreach ($result as $row) {                                      
-                                    echo '<option>'.'<br>'.  $row['id'] .'<br>'.'</option>'; //'<br>'. 'id: '. $row['id']. ' - number of participants: '. $row['num_particip']. '   '. ' - creation time: '. $row['creation_time'] . ' - id of participants: '. $row['particip_id'] .
+                        <?php foreach ($result2 as $row) {
+                            dsp_element('option' , $row['id']);                                      
+                                   // echo '<option>'.'<br>'.  $row['id'] .'<br>'.'</option>'; //'<br>'. 'id: '. $row['id']. ' - number of participants: '. $row['num_particip']. '   '. ' - creation time: '. $row['creation_time'] . ' - id of participants: '. $row['particip_id'] .
                                     } ?>
                     </select>
                     </legend>
                     </div>
             
         <?php                
-            } catch (Exception $ex) {
-                echo 'ERROR DBASE CONNECTION '.$ex->getMessage();
-            }                       
+                                  
         ?>
-                    <p><?php echo $_POST['member_sel'] ;?></p>
+                    <p><?php //echo $_POST['member_sel'] ;?></p>
                                                 
                         <div><input type='text' name='crt_msg' id='crt_msg'></div>
                         <br>
@@ -92,14 +98,12 @@ and open the template in the editor.
                         <br>        
                         <div><iframe name="message_display_iframe" style="height:250px;">
                             <span>
-                                <select size='10' id='msg_dsp' style="width: 250px;">
-                                    
-                                </select>
+                               
                             </span>
                         </iframe>
                         </div>
                         
-                        <!--div><button type='submit' name='send' id='' value='' formaction="send_new.php">Send</button></div-->
+                        <div><button type='button' name='display conversation' id='dsp_cnv' value='' action="display_conv.php" style="visibility:hidden">display conversation</button></div-->
                         <br>
                         <button> <a href="logout.php">Logout</a></button>
                         <p><?php /* echo $_POST['member_sel'];// select the entire row,and then filter the name and id, and store them in variables*/?></p>
@@ -107,6 +111,6 @@ and open the template in the editor.
 <!--INSERT INTO `conv_reg` (`id`, `num_particip`, `creation_time`, `particip_id`) VALUES ('4', '3', '2018-11-07 00:00:00', '5');  -->                          
                 </form>
 
-                
+           <script src="./script_taj.js"></script>    
     </body>
 </html>
