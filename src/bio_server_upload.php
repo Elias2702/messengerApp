@@ -2,30 +2,24 @@
 session_start();
 require_once 'db_param.php';
 $id = $_SESSION['id'];
+$db_img = new PDO ($dsn, $user_db, $pass_db);
+$db_img -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 if(isset($_POST['submit'])) {
-    $image        = $_FILES['image'];
-
-    $imageName    = $_FILES['image']['name'];
-    $imageTmpName = $_FILES['image']['tmp_name'];
-    $imageSize    = $_FILES['image']['size'];
-    $imageError   = $_FILES['image']['error'];
-
-    $imageExt = explode('.', $imageName);
-    $imageActualExt = strtolower(end($imageExt));
-
-    if ($imageError === 0) {
-        if ($imageSize <= 1000000) {
-            $imageNameNew = 'user_id_' . $id . '.' . $imageActualExt;
-            $imageDestination = './uploads/' . $imageNameNew;
-            move_uploaded_file($imageTmpName, $imageDestination);
-        } else {
-            echo "Votre fichier est trop gros :-(";
-        }
+    $bio = $_POST['bio'];
+    if (strlen($bio) > 0) {
+        $sql = "UPDATE user SET bio = ? WHERE id = ?";
+        $statement = $db_img -> prepare($sql);
+        $statement -> execute([$bio, $id]);
     } else {
-        echo "Une erreur s'est produite lors du chargement de votre image :-(";
+        $bio = NULL;
+        $sql = "UPDATE user SET bio = ? WHERE id = ?";
+        $statement = $db_img -> prepare($sql);
+        $statement -> execute([$bio, $id]);
     }
+    header("Location: bio_user_upload.php");
+    die('Une erreur s\'est produite');
+} else {
+    echo "Une erreur s'est produite";
 }
-
-
 ?>

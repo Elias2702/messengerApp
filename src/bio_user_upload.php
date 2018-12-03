@@ -8,9 +8,17 @@
     // $id = $_SESSION['id'];
     // Using 'prenom' to customize a little text displayed on the page (see HTML):
     $pn = $_SESSION['prenom'];
+    $id = $_SESSION['id'];
     // // Connecting to database:
     $db_img = new PDO ($dsn, $user_db, $pass_db);
     $db_img -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    // If there is no path, the value is NULL:
+    $sql = "SELECT bio FROM user WHERE id = ?";
+    $statement = $db_img -> prepare($sql);
+    $statement -> execute([$id]);
+    $bio_result_array = $statement -> fetchAll(PDO::FETCH_ASSOC);
+    $bio_result_object = $bio_result_array[0];
+    $bio_result = $bio_result_object["bio"];
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +34,17 @@
         <form action='bio_server_upload.php' method='POST'>
             <label for="bio">Description :</label>
             <input type="textarea" name="bio" placeholder="Entrez ici votre texte de maximum X caractères">
-            <button type="submit" id="submit">Envoyer</button>
+            <button type="submit" name="submit">Envoyer</button>
         </form>
+        <br>
+        <form action='user_home.php'>
+            <input type='submit' value="Finaliser l'inscription" />
+        </form>
+        <?php
+        if ($bio_result != NULL) {
+            echo "<h2>Votre description actuelle :</h2>";
+            echo "<p>$bio_result</p>";
+        }
+        ?>
     </body>
 </html>

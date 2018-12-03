@@ -37,13 +37,15 @@ if(isset($_POST['submit'])) {
     $imageActualExt = strtolower(end($imageExt));
 
     if ($imageError === 0) {
-        if ($imageSize <= 1000000) {
+        if ($imageSize <= 5242880) {
             $imageNameNew = 'user_id_' . $id . '.' . $imageActualExt;
             $imageDestination = 'uploads/' . $imageNameNew;
             move_uploaded_file($imageTmpName, $imageDestination);
-            $sql = "UPDATE user SET picture = $imageDestination WHERE id = $id";
-            $db_img -> exec($sql);
+            $sql = "UPDATE user SET picture = ? WHERE id = ?";
+            $statement = $db_img -> prepare($sql);
+            $statement -> execute([$imageDestination, $id]);
             header("Location: img_user_upload.php");
+            die('Une erreur s\'est produite');
         } else {
             echo "Votre fichier est trop gros :-(";
         }
