@@ -97,9 +97,7 @@ and open the template in the editor.
                         <div><input type="submit" value="SEND"></div>
                         <br>        
                         <div><iframe name="message_display_iframe" style="height:250px;">
-                            <span>
-                               
-                            </span>
+                            
                         </iframe>
                         </div>
                         

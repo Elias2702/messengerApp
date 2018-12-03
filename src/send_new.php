@@ -33,7 +33,9 @@ $particip_id = strval($cur_mem . " " . $other_mem_id);
 if($msg_cnt != '') {  
 crt_new_msg($cur_mem, $cnv_ident, $msg_cnt);
 }
+
 $msg_list2 = get_convers_msg($cnv_ident);
+//display
     echo '<select size = "10" style="width:250px;">';
         foreach ($msg_list2 as $row) {
             echo "<option>". $row["content"] ."<br> "."</option>";   
