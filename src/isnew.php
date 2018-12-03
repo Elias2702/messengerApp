@@ -11,15 +11,20 @@ require_once 'db_param.php';
 // - ?? what happens when error connection the db ??
 header("Refresh:2; url=new_user.php");
 
-// Create session variables with infos from POST (formulaire.php)
+//Reinit session const
+$_SESSION = array();
+
+// Create session const with infos from POST (formulaire.php)
 $_SESSION['prenom'] = $_POST['prenom'] ;
 $_SESSION['nom'] = $_POST['nom'] ;
 $_SESSION['sexe'] = $_POST['sexe'] ;
 $_SESSION['pseudo'] = $_POST['pseudo'] ;
 $_SESSION['email'] = $_POST['email'] ;
-$_SESSION['pass'] = $_POST['pass'] ;
+
 $eml = $_SESSION['email'];
 $psd = $_SESSION['pseudo'];
+
+$_SESSION['pass'] = $_POST['pass'];
 
 try {
     // Set connection to the database
