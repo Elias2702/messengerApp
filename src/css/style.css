@@ -2,9 +2,24 @@
     background-color :grey;
 }
 
+.lightgrey {
+    background-color: lightgrey;
+    overflow: hidden;
+    margin-right: 10px;
+    border-radius: 15px;
+}
+
 .errmsg {
     color: red;
     position: absolute;
     margin-left : 250px;
     margin-top : -30px;
+}
+
+.pro_pic{
+    width: 50px;
+    height: 50px;
+    border-radius: 100px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
