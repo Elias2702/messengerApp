@@ -69,7 +69,7 @@ session_start();
                 <button onclick="location.href='logout.php'">Logout</button>
                 <br>
                 <br>
-                <button onclick="location.href='inclpicker.php'">Inclpicker</button>
+                <button onclick="location.href='includer.php'">Inclpicker</button>
                 <br>
     </body>
 </html>

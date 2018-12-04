@@ -1,12 +1,24 @@
 .grey {
     background-color :grey;
+    min-width: 140px;
+    overflow: auto; 
 }
+
+.pink {
+    background-color :pink;
+    min-width: 140px;
+}
+
 
 .lightgrey {
     background-color: lightgrey;
-    overflow: hidden;
+    overflow: none;
+    margin-left: 20px;
     margin-right: 10px;
-    border-radius: 15px;
+    border-radius: 10px;
+    padding: 2px 5px 3px 5px;
+    word-wrap: break-word;
+
 }
 
 .errmsg {
@@ -20,6 +32,26 @@
     width: 50px;
     height: 50px;
     border-radius: 100px;
-    margin-left: 10px;
+    margin-left: 20px;
     margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.global-cont {
+    width: 100vw;
+    height: 100vh;
+    padding: 0px;
+}
+
+.pck-pnl {
+    height: 100%;
+    overflow: none;
+    padding: 20px;
+ 
+}
+
+
+.central {
+    height: 100%;
+    overflow: none;
 }

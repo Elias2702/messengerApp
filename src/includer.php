@@ -1,5 +1,7 @@
 <?php
 session_start();
+$cur_mem_id = $_SESSION['id'];
+$cur_mem_psd = $_SESSION['pseudo'];
 ?>
 
 <!DOCTYPE html>
@@ -13,17 +15,24 @@ session_start();
     <title>Inclpickertest</title>
 </head>
 <body>
-    <div class="container-fluid">
-       
-        <div class="col-3 grey">
-            <br>
-            <?php
-                include 'picker.php';
-            ?>
-            <br>
+    <div class="container-fluid global-cont row">
+      
+            <div class="col-3 grey pck-pnl">
+                <br>
+                <?php
+                    include 'picker.php';
+                ?>
+                <br>
+            </div>
+            <div class="col-7 pink central">
+                <br>
+                <?php
+                    include 'central.php';
+                ?>
+                <br>
+            </div>
         </div>
 
-    </div>
 
     
 </body>
