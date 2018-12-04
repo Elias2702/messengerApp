@@ -18,20 +18,31 @@ $cur_mem_psd = $_SESSION['pseudo'];
     <div class="container-fluid global-cont row">
       
             <div class="col-3 grey pck-pnl">
-                <br>
-                <?php
-                    include 'picker.php';
-                ?>
-                <br>
+                <form action="includer.php" method='POST'>
+                    <br>
+                    <?php
+                        include 'picker.php';
+                    ?>
+                    <br>
+                </form>
             </div>
-            <div class="col-7 pink central">
-                <br>
-                <?php
-                    include 'central.php';
-                ?>
-                <br>
+            <div class="col-7">
+                <div class=" pink central">
+                    <br>
+                    <?php
+                        include 'central.php';
+                    ?>
+                    <br>
+                </div>
+                <div class="blue send">
+                    <br>
+                    <?php
+                        include 'create_msg.php';
+                    ?>
+                    <br>
+                </div>
             </div>
-        </div>
+    </div>
 
 
     

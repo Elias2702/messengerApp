@@ -9,6 +9,10 @@
     min-width: 140px;
 }
 
+.blue {
+    background-color :blue;
+    min-width: 140px;
+}
 
 .lightgrey {
     background-color: lightgrey;
@@ -18,7 +22,6 @@
     border-radius: 10px;
     padding: 2px 5px 3px 5px;
     word-wrap: break-word;
-
 }
 
 .errmsg {
@@ -45,13 +48,23 @@
 
 .pck-pnl {
     height: 100%;
-    overflow: none;
+    overflow: auto;
     padding: 20px;
  
 }
 
+.convbtn {
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+}
+
 
 .central {
-    height: 100%;
-    overflow: none;
+    height: 90%;
+    overflow: auto;
+}
+
+.send {
+    height: 10%;
+    overflow: auto;
 }
