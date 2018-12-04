@@ -17,7 +17,7 @@ if ($_POST['conv_reg_id']) {
     
     $_SESSION['conv_reg_id'] = null;
 
-    if ( && $_SESSION['id'] < $_POST['oth_mem_id']) {
+    if ($_SESSION['id'] < $_POST['oth_mem_id']) {
         
         $_SESSION['particip_id'] = $_SESSION['id'] . " " . $_POST['oth_mem_id'];
         
