@@ -28,7 +28,7 @@
         <title>User bio upload</title>
     </head>
     <body>
-        <p><?php echo $pn; ?>, le chat serait plus sympa avec une petite description de vous !</p>
+        <p><?php echo htmlspecialchars($pn); ?>, le chat serait plus sympa avec une petite description de vous !</p>
 <!-- Formulaire utilisateur pour uploader la bio -->
 <!-- Envoie vers bio_server_upload.php pour l'upload du fichier et la mise à jour de la db -->
         <form action='bio_server_upload.php' method='POST'>
@@ -42,6 +42,7 @@
         </form>
         <?php
         if ($bio_result != NULL) {
+            $bio_result_secure = htmlspecialchars($bio_result);
             echo "<h2>Votre description actuelle :</h2>";
             echo "<p>$bio_result</p>";
         }
