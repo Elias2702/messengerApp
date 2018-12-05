@@ -1,6 +1,9 @@
 <?php
 session_start();
 
+
+header('Location: includer.php');
+
 require_once 'db_param.php';
 
 $content = $_POST['content'];
@@ -11,7 +14,6 @@ $particip_id = $_SESSION['particip_id'];
 
 
 
-header('Location: includer.php');
 
 try {
     $db = new PDO ($dsn, $user_db, $pass_db);
@@ -22,6 +24,8 @@ try {
         // insérer message dans cette conv
         $q_msg="INSERT INTO messages (owner_id, conv_reg_id, time, content) VALUES ('$cur_mem_id', '$conv_reg_id', '$create_time', '$content')";
         $db->exec($q_msg);
+
+        $_SESSION['temp_conv_reg_id'] = null;
 
     } else {
 
@@ -39,7 +43,7 @@ try {
         $db->exec($q_msg_2);
 
         //création 
-        $_SESSION['temp_conv_reg_id'] = $conv_reg_id;
+        $_SESSION['conv_reg_id'] = $conv_reg_id;
 
     }
 

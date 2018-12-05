@@ -3,17 +3,16 @@
 session_start();
 
 
+/*
+echo "post - conv reg id = " . $_POST['conv_reg_id'] . "<br>";
+echo "session - conv reg id = " . $_SESSION['conv_reg_id'] . "<br>";
+echo "session - temp conv reg id = " . $_SESSION['temp_conv_reg_id'] . "<br>";
+echo "post - oth_mem_id = " . $_POST['oth_mem_id'] . "<br>";
+*/
+
 require_once 'db_param.php';
 
-if ($_POST['conv_reg_id']) {
-   
-    $_SESSION['conv_reg_id'] = $_POST['conv_reg_id'];    
-
-} elseif ($_SESSION['temp_conv_reg_id']) { 
-
-    $_SESSION['conv_reg_id'] = $_SESSION['temp_conv_reg_id'];
-   
-} elseif ($_POST['oth_mem_id']) {
+if (isset($_POST['oth_mem_id'])) {
     
     $_SESSION['conv_reg_id'] = null;
 
@@ -25,10 +24,18 @@ if ($_POST['conv_reg_id']) {
 
         $_SESSION['particip_id'] = $_POST['oth_mem_id'] . " " . $_SESSION['id'];
 
-    }    
+    } 
 
-}
+} elseif (isset($_POST['conv_reg_id'])) {    
 
+    $_SESSION['conv_reg_id'] = $_POST['conv_reg_id'];  
+    
+
+} elseif (isset($_SESSION['temp_conv_reg_id'])) { 
+
+    $_SESSION['conv_reg_id'] = $_SESSION['temp_conv_reg_id'];
+   
+} 
 
 
 try {

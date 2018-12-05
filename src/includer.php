@@ -2,6 +2,7 @@
 session_start();
 $cur_mem_id = $_SESSION['id'];
 $cur_mem_psd = $_SESSION['pseudo'];
+
 ?>
 
 <!DOCTYPE html>
@@ -17,8 +18,25 @@ $cur_mem_psd = $_SESSION['pseudo'];
 <body>
     <div class="container-fluid global-cont row">
       
+        <div class="col-6 order-2">
+            <div class=" col-auto pink central">
+                <br>
+                <?php
+                    include 'central.php';
+                ?>
+                <br>
+            </div>
+            <div class="blue send">
+                <br>
+                <?php
+                    include 'create_msg.php';
+                ?>
+                <br>
+            </div>
+        </div>
+
             <div class="col-3 grey pck-pnl">
-                <form action="includer.php" method='POST'>
+                <form  method='POST'>
                     <br>
                     <?php
                         include 'picker.php';
@@ -26,22 +44,7 @@ $cur_mem_psd = $_SESSION['pseudo'];
                     <br>
                 </form>
             </div>
-            <div class="col-7">
-                <div class=" pink central">
-                    <br>
-                    <?php
-                        include 'central.php';
-                    ?>
-                    <br>
-                </div>
-                <div class="blue send">
-                    <br>
-                    <?php
-                        include 'create_msg.php';
-                    ?>
-                    <br>
-                </div>
-            </div>
+            
     </div>
 
 
