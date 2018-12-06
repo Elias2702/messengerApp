@@ -1,7 +1,10 @@
+body {
+  height: 100%;
+}
 .grey {
     background-color :grey;
     min-width: 140px;
-    overflow: auto; 
+    overflow: auto;
 }
 
 .pink {
@@ -50,7 +53,7 @@
     height: 100%;
     overflow: auto;
     padding: 20px;
- 
+
 }
 
 .convbtn {
@@ -67,4 +70,39 @@
 .send {
     height: 10%;
     overflow: auto;
+}
+
+.pck-pnl {
+    height: 100%;
+    overflow: auto;
+    padding: 20px;
+}
+
+.central {
+    height: 90%;
+    overflow: auto;
+}
+
+.send {
+    height: 10%;
+    overflow: auto;
+}
+
+.toggle {
+    opacity: 0;
+}
+
+.toggle:hover {
+    opacity: 1;
+}
+
+.smiley {
+    width: 20px;
+    height: 20px;
+    margin: 10px;
+}
+
+.emo_btn{
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
 }
