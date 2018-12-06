@@ -1,7 +1,10 @@
+body {
+  height: 100%;
+}
 .grey {
     background-color :grey;
     min-width: 140px;
-    overflow: auto; 
+    overflow: auto;
 }
 
 .pink {
@@ -49,12 +52,30 @@
 .pck-pnl {
     height: 100%;
     overflow: auto;
-    padding: 20px; 
+    padding: 20px;
+
 }
 
 .convbtn {
     background-color: rgba(0, 0, 0, 0);
     border: none;
+}
+
+
+.central {
+    height: 90%;
+    overflow: auto;
+}
+
+.send {
+    height: 10%;
+    overflow: auto;
+}
+
+.pck-pnl {
+    height: 100%;
+    overflow: auto;
+    padding: 20px;
 }
 
 .central {
