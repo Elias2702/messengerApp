@@ -29,7 +29,7 @@ try {
 
     foreach($res as $row) {
      
-        echo "<img class='smiley' src='" . $row['img'] . "' alt='smiley'/>";
+        echo "<button class='emo_btn' type='submit'><img class='smiley' src='" . $row['img'] . "' alt='smiley'/></button>";
 
     }
 
