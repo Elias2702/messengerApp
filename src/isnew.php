@@ -11,15 +11,20 @@ require_once 'db_param.php';
 // - ?? what happens when error connection the db ??
 header("Refresh:2; url=new_user.php");
 
-// Create session variables with infos from POST (formulaire.php)
+//Reinit session const
+$_SESSION = array();
+
+// Create session const with infos from POST (formulaire.php)
 $_SESSION['prenom'] = $_POST['prenom'] ;
 $_SESSION['nom'] = $_POST['nom'] ;
 $_SESSION['sexe'] = $_POST['sexe'] ;
 $_SESSION['pseudo'] = $_POST['pseudo'] ;
 $_SESSION['email'] = $_POST['email'] ;
-$_SESSION['pass'] = $_POST['pass'] ;
+
 $eml = $_SESSION['email'];
 $psd = $_SESSION['pseudo'];
+
+$_SESSION['pass'] = $_POST['pass'];
 
 try {
     // Set connection to the database
@@ -32,12 +37,28 @@ try {
 
     // Loops in the result of the query 
     foreach ($result as $row) {        
-        // compare with the new credentials supplied
-        if (($row['pseudo'] == $psd) || ($row['email'] == $eml))  {
-            // if used already, back to formulaire.php
-            // NOTE would be better to have the form still fulfilled ----------------------------------------
+
+        // If pseudo already used
+        if ($row['pseudo'] == $psd) {
+
+            // Create 'error' SESSION const to retrieve error on formulaire.php
+            $_SESSION['pseudoerror'] = 'This pseudo is used already, <br>please chose another pseudo';
+
+            // back to formulaire.php            
             header('Location: formulaire.php');
-        // if okay, retrieve value of ID for const $_SESSION 
+
+
+        // Else if email already used    
+        } elseif ($row['email'] == $eml) {
+
+            // Create 'error' SESSION const to retrieve error on formulaire.php
+            $_SESSION['emailerror'] = 'This email is already registered, <br>please go to the Login page';
+
+            // back to formulaire.php
+            header('Location: formulaire.php');
+      
+        // if both are new, retrieve value of ID for const $_SESSION 
+        // and go to new_user.php (line 12)
         } else {
             $_SESSION['id'] = $row['id'];
         }

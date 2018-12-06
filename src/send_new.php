@@ -10,10 +10,11 @@ require_once './func php/f_get_convers_reg.php';
 require_once './func php/f_crt_new_msg.php';
 
 $cur_mem = $_SESSION['id'];
-$other_mem_pseudo = $_POST['mem_sel']; //super important : ID of the other user !!!
+$other_mem_id = $_POST['mem_sel']; 
 $msg_crt_time = date("Y-m-d H:i:s");
 $msg_cnt = $_POST['crt_msg'];
 
+<<<<<<< HEAD
 
 // extract user_id that corresponds to user pseudo
 
@@ -21,6 +22,13 @@ $msg_cnt = $_POST['crt_msg'];
 $other_mem_id = get_mem_id($other_mem_pseudo);
 $particip_id = strval($cur_mem . " " . $other_mem_id);
 
+=======
+if ($cur_mem < $other_mem_id) {
+    $particip_id = strval($cur_mem . " " . $other_mem_id);
+} else {
+    $particip_id = strval($other_mem_id . " " . $cur_mem);
+}
+>>>>>>> devantoine
 
 /*  1- connect to db,table { { conv_reg } }.
     2- verify if there is a conversation already between $cur_mem and $other_mem.*/
@@ -34,10 +42,18 @@ if($msg_cnt != '') {
 crt_new_msg($cur_mem, $cnv_ident, $msg_cnt);
 }
 
+<<<<<<< HEAD
 $msg_list2 = get_convers_msg($cnv_ident);
 //display
     echo '<select size = "10" style="width:250px;">';
         foreach ($msg_list2 as $row) {
+=======
+try {
+    $q_msg_dsp ="SELECT `content` FROM messenger.messages WHERE `conv_reg_id` = '$cnv_ident' ;";
+    $msg_list = $db_msg_ins -> query("$q_msg_dsp")->fetchAll();
+    
+        foreach ($msg_list as $row) {
+>>>>>>> devantoine
             echo "<option>". $row["content"] ."<br> "."</option>";   
         }
         echo '</select>';

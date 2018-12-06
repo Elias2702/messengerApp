@@ -27,13 +27,15 @@ and open the template in the editor.
             <input type='password' name='pass' placeholder='Enter you user password'>
             <br><br>
             <input type='submit' value='LOGIN'>
-            <br><br>        
+            <br>
+            <a href="retrieve_pass.php">password forgotten ?</a>
+            <br>        
 
         </form>
 
         <br>
         <p>Not a member yet ?</p>
-        <button><a href="formulaire.php">Register</a></button>
+        <button onclick="location.href='formulaire.php'">Register</button>
 
     </body>
 </html>

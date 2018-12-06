@@ -10,9 +10,15 @@ require_once 'db_param.php';
 require_once './class php/user_class.php';
 
 // Retrieves CONST
-$pass = $_POST['pass'];
 $email = $_POST['email'];
 $_SESSION['email'] = $email;
+
+// Hashes password
+$pass = $_POST['pass'];
+
+
+
+$mailexists = false;
 
 try {
     // Set connection to the database
@@ -25,6 +31,7 @@ try {
     
     foreach ($result as $row) {
         if ($row['email'] == $email) {
+
             /*$obj = new Object();
 
             $_SESSION['obj'] = serialize($obj);
@@ -32,7 +39,7 @@ try {
             $obj = unserialize($_SESSION['obj']);*/
 
           // $_SESSION['mem'] = new user_cl;
-            $passcheck = $row['pass'];
+           /* $passcheck = $row['pass'];
             $id = $row['id'];
             $prenom = $row['prenom'];
             $nom = $row['nom'];
@@ -42,15 +49,30 @@ try {
 
             $mem = new user_cl($id,$prenom,$nom,$sexe,$pseudo,$email,$pass);    
             $_SESSION['mem'] =   serialize($mem);  
-            //$mem = unserialize($_SESSION['mem']);   
+            //$mem = unserialize($_SESSION['mem']); */  
+
+            $mailexists = true;
+            $pass_check = password_verify($pass, $row['pass']);
+            $_SESSION['id'] = $row['id'];
+            $_SESSION['prenom'] = $row['prenom'];
+            $_SESSION['nom'] = $row['nom'];
+            $_SESSION['sexe'] = $row['sexe'];
+            $_SESSION['pseudo'] = $row['pseudo'];
+            $_SESSION['pass'] = $hash_pass;            
+
         }
     }
 
-    if($passcheck == null) {
+    if(!$mailexists) {
         header('Refresh: 2; index.php');
         echo 'not a valid email';
+/*<<<<<<< HEAD
     } elseif($pass == $passcheck) {
         header("Refresh: 2; url=chatt.php");
+=======*/
+    } elseif($pass_check) {
+        header("Refresh: 2; url=user_home.php");
+//>>>>>>> devantoine
         echo 'Hello ' . $_SESSION['pseudo'];
         var_dump($_SESSION['mem']);
     } else {
