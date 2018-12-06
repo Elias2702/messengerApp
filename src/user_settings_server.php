@@ -1,6 +1,7 @@
 <?php
 session_start();
 // This page connects the forms in user_settings.php to the DB.
+// Still to do: (1) Checking against pseudo and email already existing in DB (2) Hashing password
 require_once 'db_param.php';
 $id = $_SESSION['id'];
 $db_img = new PDO ($dsn, $user_db, $pass_db);
