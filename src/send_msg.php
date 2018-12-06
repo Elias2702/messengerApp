@@ -42,7 +42,7 @@ try {
         $q_msg_2="INSERT INTO messages (owner_id, conv_reg_id, time, content) VALUES ('$cur_mem_id', '$conv_reg_id', '$create_time', '$content')";
         $db->exec($q_msg_2);
 
-        //création 
+        //Réaffectation de la variable de session
         $_SESSION['conv_reg_id'] = $conv_reg_id;
 
     }

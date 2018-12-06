@@ -50,18 +50,35 @@ try {
         if($row['owner_id'] == $cur_mem_id) {
             
             echo "<div class='col-auto'><strong> ". $cur_mem_psd . 
-            "</strong></div><div class='col-auto lightgrey'>" . $row['content'] . 
-            " </div><div class='toggle'><a href='emojis.php' onClick='showPopup(this.href);return(false);'><img class='smiley' src='uploads/smiley.png'alt='smiley'></a></div><br>";
-        
+            "</strong></div><div class='col-auto lightgrey'>" . $row['content'] . "<br>" ;
             
-        
+            $q_emo = "SELECT * FROM emo_react WHERE msg_id ='" . $row['id'] . "'";
+            $res5 = $db->query($q_emo)->fetchAll();
+            foreach($res5 as $emo){
+                echo "<img class='smiley' src='" . $emo['emo_path'] . "' title='" . $emo['usr_pseudo'] . "' alt='emo' />";
+            }
+
+            echo "</div><div class='toggle'><a href='emojis.php?msg_id=" . $row['id'] . 
+            "' onClick='showPopup(this.href);return(false);'><img class='smiley' src='uploads/smiley.png'alt='smiley'></a></div>";
+
+
         } else {
             $q_user="SELECT id, pseudo, picture FROM user WHERE id ='". $row['owner_id']."'";    
             $res5 = $db->query($q_user)->fetchAll(PDO::FETCH_ASSOC);
             
             echo "<div class='col-auto'><strong> ". $res5[0]['pseudo'] . 
-            "</strong></div><div class='col-auto lightgrey'>" . $row['content'] . 
-            " </div><div class='toggle'><a href='emojis.php' onClick='showPopup(this.href);return(false);'><img href='emojis.php' class='smiley' src='uploads/smiley.png'alt='smiley'></a></div><br>";
+            "</strong></div><div class='col-auto lightgrey'>" . $row['content'] . "<br>" ;
+            
+
+            $q_emo = "SELECT * FROM emo_react WHERE msg_id ='" . $row['id'] . "'";
+            $res5 = $db->query($q_emo)->fetchAll();
+            foreach($res5 as $emo){
+                echo "<img class='smiley' src='" . $emo['emo_path'] . "' title='" . $emo['usr_pseudo'] . "' alt='emo' />";
+            }
+  
+            echo "</div><div class='toggle'><a href='emojis.php?msg_id=" . $row['id'] . 
+            "' onClick='showPopup(this.href);return(false);'><img href='emojis.php' class='smiley' src='uploads/smiley.png'alt='smiley'></a></div>";
+
         }
     }    
     
