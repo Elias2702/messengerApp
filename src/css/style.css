@@ -49,11 +49,10 @@
 .pck-pnl {
     height: 100%;
     overflow: auto;
-    padding: 20px;
- 
+    padding: 20px; 
 }
 
-.conv_btn {
+.convbtn {
     background-color: rgba(0, 0, 0, 0);
     border: none;
 }
@@ -72,4 +71,16 @@
 .send {
     height: 10%;
     overflow: auto;
+}
+
+.smiley {
+    width: 20px;
+    height: 20px;
+    margin: 10px;
+}
+
+.smiley:hover {
+    width: 20px;
+    height: 20px;
+    margin: 10px;
 }

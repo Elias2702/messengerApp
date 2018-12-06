@@ -35,13 +35,13 @@ try {
                 //si l'autre utilisateur a une img de profil
                 if($row['picture']){
 
-                    print "<button class='row conv_btn' type='submit' value='" . $res2 . "' name='conv_reg_id' ><img class='pro_pic' src='" . $row['picture'] . "'alt='profile picture'>";
+                    print "<button class='row convbtn' type='submit' value='" . $res2 . "' name='conv_reg_id' ><img class='pro_pic' src='" . $row['picture'] . "'alt='profile picture'>";
                     print "<div class='col-auto lightgrey'><strong> ". $row['pseudo'] . "</strong><br>" . $res3[0][2] . " </div></button><br>";
 
                 //si pas de photo de profil
                 } else {
 
-                    print "<button class='row conv_btn' type='submit' value='" . $res2 . "' name='conv_reg_id' ><img class='pro_pic' src='uploads/def_icon.png'alt='profile picture'>";
+                    print "<button class='row convbtn' type='submit' value='" . $res2 . "' name='conv_reg_id' ><img class='pro_pic' src='uploads/def_icon.png'alt='profile picture'>";
                     print "<div class='col-auto lightgrey'><strong> ". $row['pseudo'] . "</strong><br>" . $res3[0][2] . " </div></button><br>";
 
                 }
@@ -53,13 +53,13 @@ try {
                 //si l'autre utilisateur a une img de profil
                 if($row['picture']){
 
-                    print "<button class='row conv_btn' type='submit' value='" . $row['id'] . "' name='oth_mem_id' ><img class='pro_pic' src='" . $row['picture'] . "'alt='profile picture'>";
+                    print "<button class='row convbtn' type='submit' value='" . $row['id'] . "' name='oth_mem_id' ><img class='pro_pic' src='" . $row['picture'] . "'alt='profile picture'>";
                     print "<div class='col-auto lightgrey'><strong> ". $row['pseudo'] . "</strong><br> Start new conversation </div></button><br>";
 
                 //si pas de photo de profil
                 } else {
 
-                    print "<button class='row conv_btn' type='submit' value='" . $row['id'] . "' name='oth_mem_id' ><img class='pro_pic' src='uploads/def_icon.png'alt='profile picture'>";
+                    print "<button class='row convbtn' type='submit' value='" . $row['id'] . "' name='oth_mem_id' ><img class='pro_pic' src='uploads/def_icon.png'alt='profile picture'>";
                     print "<div class='col-auto lightgrey'><strong> ". $row['pseudo'] . "</strong><br> Start new conversation </div></button><br>";
 
                 }

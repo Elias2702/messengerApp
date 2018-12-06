@@ -48,11 +48,20 @@ try {
 
     foreach($res4 as $row) {
         if($row['owner_id'] == $cur_mem_id) {
-            echo "<button class='row msg_btn' type='submit' value='" . $res4['id'] . "' name='msg_id'><div class=''col-auto lightgrey'><strong> ". $cur_mem_psd . "</strong><br>" . $row['content'] . " </div></button><br>";
+            
+            echo "<div class='col-auto'><strong> ". $cur_mem_psd . 
+            "</strong></div><div class='col-auto lightgrey'>" . $row['content'] . 
+            " </div><img class='smiley' src='uploads/smiley.png'alt='smiley'><br>";
+        
+            
+        
         } else {
             $q_user="SELECT id, pseudo, picture FROM user WHERE id ='". $row['owner_id']."'";    
             $res5 = $db->query($q_user)->fetchAll(PDO::FETCH_ASSOC);
-            echo "<div class='col-2 align-self-end lightgrey'><strong> ". $res5[0]['pseudo'] . "</strong><br>" . $row['content'] . " </div><br>";
+            
+            echo "<div class='col-auto'><strong> ". $res5[0]['pseudo'] . 
+            "</strong></div><div class='col-auto lightgrey'>" . $row['content'] . 
+            " </div><img class='smiley' src='uploads/smiley.png'alt='smiley'><br>";
         }
     }    
     
