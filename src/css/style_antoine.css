@@ -2,23 +2,33 @@ body {
   height: 100%;
 }
 .grey {
-    background-color :grey;
+    /*background-color :grey;*/
     min-width: 140px;
     overflow: auto;
 }
 
 .pink {
-    background-color :pink;
+    /*background-color :pink;*/
     min-width: 140px;
 }
 
 .blue {
-    background-color :blue;
+    /*background-color :blue;*/
     min-width: 140px;
 }
 
 .lightgrey {
     background-color: lightgrey;
+    overflow: none;
+    margin-left: 20px;
+    margin-right: 10px;
+    border-radius: 10px;
+    padding: 2px 5px 3px 5px;
+    word-wrap: break-word;
+}
+
+.lightblue {
+    background-color: lightblue;
     overflow: none;
     margin-left: 20px;
     margin-right: 10px;
@@ -63,12 +73,12 @@ body {
 
 
 .central {
-    height: 90%;
+    height: 80%;
     overflow: auto;
 }
 
 .send {
-    height: 10%;
+    height: 20%;
     overflow: auto;
 }
 
@@ -79,12 +89,12 @@ body {
 }
 
 .central {
-    height: 90%;
+    height: 80%;
     overflow: auto;
 }
 
 .send {
-    height: 10%;
+    height: 20%;
     overflow: auto;
 }
 

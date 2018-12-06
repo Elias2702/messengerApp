@@ -50,7 +50,7 @@ try {
         if($row['owner_id'] == $cur_mem_id) {
             
             echo "<div class='col-auto'><strong> ". $cur_mem_psd . 
-            "</strong></div><div class='col-auto lightgrey'>" . $row['content'] . "<br>" ;
+            "</strong></div><div class='col-auto lightblue'>" . $row['content'] . "<br>" ;
             
             $q_emo = "SELECT * FROM emo_react WHERE msg_id ='" . $row['id'] . "'";
             $res5 = $db->query($q_emo)->fetchAll();
