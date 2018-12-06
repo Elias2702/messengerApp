@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Dec 06, 2018 at 01:27 PM
+-- Generation Time: Dec 06, 2018 at 04:43 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.2.8
 
@@ -40,32 +40,7 @@ CREATE TABLE `conv_reg` (
 --
 
 INSERT INTO `conv_reg` (`id`, `num_particip`, `creation_time`, `particip_id`) VALUES
-(253, 2, '2018-12-05 09:12:44', '1 9'),
-(254, 2, '2018-12-05 09:12:49', '7 9'),
-(255, 2, '2018-12-05 09:13:08', '9 11'),
-(256, 2, '2018-12-05 09:29:06', '2 9'),
-(257, 2, '2018-12-05 09:29:11', '6 9'),
-(258, 2, '2018-12-05 09:29:14', '4 9'),
-(259, 2, '2018-12-05 09:29:19', '5 9'),
-(260, 2, '2018-12-05 09:33:54', '3 9'),
-(261, 2, '2018-12-05 09:34:00', '9 12'),
-(262, 2, '2018-12-05 09:34:07', '9 10'),
-(263, 2, '2018-12-05 15:39:54', '6 11'),
-(264, 2, '2018-12-06 08:37:33', '10 11'),
-(265, 2, '2018-12-06 08:52:47', '5 11'),
-(266, 2, '2018-12-06 08:53:02', '1 11'),
-(267, 2, '2018-12-06 08:59:09', '7 11'),
-(268, 2, '2018-12-06 09:00:30', '2 11'),
-(269, 2, '2018-12-06 09:47:01', '11 12'),
-(270, 2, '2018-12-06 10:32:48', ' 7'),
-(271, 2, '2018-12-06 10:34:12', ' 1'),
-(272, 2, '2018-12-06 10:34:23', ' 12'),
-(273, 2, '2018-12-06 10:36:23', ' 1'),
-(274, 2, '2018-12-06 10:38:22', '5 11'),
-(275, 2, '2018-12-06 10:39:25', '3 11'),
-(276, 2, '2018-12-06 10:39:28', '3 11'),
-(277, 2, '2018-12-06 13:10:33', '4 11'),
-(278, 2, '2018-12-06 13:10:36', '4 11');
+(283, 2, '2018-12-06 15:45:06', '11 12');
 
 -- --------------------------------------------------------
 
@@ -190,6 +165,28 @@ INSERT INTO `emojis` (`id`, `img`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `emo_react`
+--
+
+CREATE TABLE `emo_react` (
+  `id` int(11) NOT NULL,
+  `usr_id` int(11) NOT NULL,
+  `usr_pseudo` varchar(100) NOT NULL,
+  `msg_id` int(11) NOT NULL,
+  `emo_path` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `emo_react`
+--
+
+INSERT INTO `emo_react` (`id`, `usr_id`, `usr_pseudo`, `msg_id`, `emo_path`) VALUES
+(19, 11, 'tutu', 395, '/emojis/2.png'),
+(20, 12, 'totoro', 395, '/emojis/80.png');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `messages`
 --
 
@@ -206,44 +203,7 @@ CREATE TABLE `messages` (
 --
 
 INSERT INTO `messages` (`id`, `owner_id`, `conv_reg_id`, `time`, `content`) VALUES
-(353, 9, 253, '2018-12-05 09:12:44', 'hi aaa'),
-(354, 9, 254, '2018-12-05 09:12:49', 'hi totori'),
-(355, 11, 255, '2018-12-05 09:13:08', 'hi test'),
-(356, 9, 255, '2018-12-05 09:13:28', 'yop$'),
-(357, 11, 255, '2018-12-05 09:13:33', 'yep'),
-(358, 9, 255, '2018-12-05 09:20:34', 'coucou tutu'),
-(359, 11, 255, '2018-12-05 09:20:41', 'coucou test'),
-(360, 9, 256, '2018-12-05 09:29:06', 'yo bbb'),
-(361, 9, 257, '2018-12-05 09:29:11', 'yed'),
-(362, 9, 258, '2018-12-05 09:29:14', 'kk'),
-(363, 9, 259, '2018-12-05 09:29:19', 'adanou'),
-(364, 9, 259, '2018-12-05 09:31:10', 'sehserh'),
-(365, 9, 259, '2018-12-05 09:31:16', 'sehsejhse('),
-(366, 9, 260, '2018-12-05 09:33:54', 'stnjsdryn'),
-(367, 9, 261, '2018-12-05 09:34:00', 'd,jdry,'),
-(368, 9, 262, '2018-12-05 09:34:07', 'srtjsrtj'),
-(369, 9, 256, '2018-12-05 09:53:32', 'gzergze'),
-(370, 9, 262, '2018-12-05 09:58:19', 'zertjsrtj'),
-(371, 9, 262, '2018-12-05 14:53:10', 'blabla'),
-(372, 11, 255, '2018-12-05 14:55:07', 'hi test how are u?'),
-(373, 9, 255, '2018-12-05 14:55:29', 'fine thanks'),
-(374, 6, 263, '2018-12-05 15:39:54', 'bliblibli'),
-(375, 6, 263, '2018-12-05 15:39:57', 'blublublu'),
-(376, 11, 263, '2018-12-05 15:40:33', 'balblablab'),
-(377, 11, 263, '2018-12-05 15:40:38', 'bliblibli'),
-(378, 6, 263, '2018-12-05 15:51:50', 'qmzouihvnqzmrjbvnmrzeoihvqzomiehvmoqzg'),
-(379, 11, 264, '2018-12-06 08:37:33', 'fgjsrjhsr'),
-(380, 11, 263, '2018-12-06 08:59:04', 'drthdrthdrt'),
-(381, 11, 267, '2018-12-06 08:59:09', 'rthserthseth'),
-(382, 11, 268, '2018-12-06 09:00:30', 'zhserth'),
-(383, 11, 264, '2018-12-06 09:01:47', 'hserthserh'),
-(384, 11, 269, '2018-12-06 09:47:01', 'sensetnes'),
-(385, 11, 268, '2018-12-06 10:38:00', 'zvrgv'),
-(386, 11, 265, '2018-12-06 10:38:22', 'vzrvzrv'),
-(387, 11, 275, '2018-12-06 10:39:28', 'serhserhserh'),
-(388, 11, 265, '2018-12-06 11:06:24', 'zergerg'),
-(389, 11, 268, '2018-12-06 13:10:17', 'blublu'),
-(390, 11, 277, '2018-12-06 13:10:36', 'drjdfj');
+(395, 11, 283, '2018-12-06 15:45:06', 'totoro samerlaput');
 
 -- --------------------------------------------------------
 
@@ -297,6 +257,14 @@ ALTER TABLE `emojis`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `emo_react`
+--
+ALTER TABLE `emo_react`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `emo_react_ibfk_1` (`usr_id`),
+  ADD KEY `emo_react_ibfk_2` (`msg_id`);
+
+--
 -- Indexes for table `messages`
 --
 ALTER TABLE `messages`
@@ -318,7 +286,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `conv_reg`
 --
 ALTER TABLE `conv_reg`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=279;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=284;
 
 --
 -- AUTO_INCREMENT for table `emojis`
@@ -327,10 +295,16 @@ ALTER TABLE `emojis`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
 
 --
+-- AUTO_INCREMENT for table `emo_react`
+--
+ALTER TABLE `emo_react`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=391;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=396;
 
 --
 -- AUTO_INCREMENT for table `user`
@@ -341,6 +315,13 @@ ALTER TABLE `user`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `emo_react`
+--
+ALTER TABLE `emo_react`
+  ADD CONSTRAINT `emo_react_ibfk_1` FOREIGN KEY (`usr_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `emo_react_ibfk_2` FOREIGN KEY (`msg_id`) REFERENCES `messages` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `messages`
