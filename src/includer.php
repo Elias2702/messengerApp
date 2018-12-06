@@ -46,7 +46,12 @@ $cur_mem_psd = $_SESSION['pseudo'];
         </div>  
     </div>
 
-
+<script type="text/javascript">
+function showPopup(url) {
+newwindow=window.open(url,'name','height=190,width=520,top=200,left=300,resizable');
+if (window.focus) {newwindow.focus()}
+}
+</script>
     
 </body>
 </html>

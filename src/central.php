@@ -51,7 +51,7 @@ try {
             
             echo "<div class='col-auto'><strong> ". $cur_mem_psd . 
             "</strong></div><div class='col-auto lightgrey'>" . $row['content'] . 
-            " </div><img class='smiley' src='uploads/smiley.png'alt='smiley'><br>";
+            " </div><div class='toggle'><a href='emojis.php' onClick='showPopup(this.href);return(false);'><img class='smiley' src='uploads/smiley.png'alt='smiley'></a></div><br>";
         
             
         
@@ -61,7 +61,7 @@ try {
             
             echo "<div class='col-auto'><strong> ". $res5[0]['pseudo'] . 
             "</strong></div><div class='col-auto lightgrey'>" . $row['content'] . 
-            " </div><img class='smiley' src='uploads/smiley.png'alt='smiley'><br>";
+            " </div><div class='toggle'><a href='emojis.php' onClick='showPopup(this.href);return(false);'><img href='emojis.php' class='smiley' src='uploads/smiley.png'alt='smiley'></a></div><br>";
         }
     }    
     
