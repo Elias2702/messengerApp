@@ -1,0 +1,24 @@
+{
+  "name": "messenger_app",
+  "version": "1.0.0",
+  "description": "messenger app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Elias2702/messengerApp.git"
+  },
+  "author": "Antoine Dannemark",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Elias2702/messengerApp/issues"
+  },
+  "homepage": "https://github.com/Elias2702/messengerApp#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "socket.io": "^2.2.0",
+    "winston": "^2.4.4"
+  }
+}

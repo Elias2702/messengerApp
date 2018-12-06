@@ -17,8 +17,16 @@ $cur_mem_psd = $_SESSION['pseudo'];
 </head>
 <body>
     <div class="container-fluid global-cont row">
-      
-        <div class="col-6 order-2">
+        <div class="col-3 grey pck-pnl">
+            <form  method='POST'>
+                <br>
+                <?php
+                    include 'picker.php';
+                ?>
+                <br>
+            </form>
+        </div>              
+        <div class="col-6">
             <div class=" col-auto pink central">
                 <br>
                 <?php
@@ -33,18 +41,7 @@ $cur_mem_psd = $_SESSION['pseudo'];
                 ?>
                 <br>
             </div>
-        </div>
-
-            <div class="col-3 grey pck-pnl">
-                <form  method='POST'>
-                    <br>
-                    <?php
-                        include 'picker.php';
-                    ?>
-                    <br>
-                </form>
-            </div>
-            
+        </div>  
     </div>
 
 
