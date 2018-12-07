@@ -28,7 +28,7 @@ $cur_mem_psd = $_SESSION['pseudo'];
         </div>              
         <div class="col-6">
             <div class="col-auto pink central">
-                <form action="emojis.php" target="_blank" method='POST'>   
+                <form method='POST'>   
                     <br>
                     <?php
                         include 'central.php';

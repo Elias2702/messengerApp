@@ -33,7 +33,7 @@ $_SESSION['msg_id'] = $_GET['msg_id'];
 
         foreach($res as $row) {
         
-            echo "<button class='emo_btn' type='submit' name='emo' value='". $row['img'] . "'><img class='smiley' src='" . $row['img'] . "' alt='smiley'/></button>";
+            echo "<button class='emo_btn' type='submit' name='emo' value='". $row['img'] . "'><img class='icons' src='" . $row['img'] . "' alt='smiley'/></button>";
 
         }
 
