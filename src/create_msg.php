@@ -12,6 +12,7 @@ require_once 'db_param.php';
 
         <textarea cols="120" rows="5"  name='content'></textarea>
 
+        <br> 
 
         <button type="submit">SEND</button>
 

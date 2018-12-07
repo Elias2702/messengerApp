@@ -4,6 +4,7 @@ session_start();
 
 require_once 'db_param.php';
 
+// retrieve msg_id from url 
 $msg_id = $_GET['msg_id'];
 
 try {
@@ -17,16 +18,21 @@ try {
     $res4 = $db->query($q_messages)->fetchAll(PDO::FETCH_ASSOC);
     $res4 = $res4[0];
 
+    // assign actual content of the message to $content    
     $content = $res4['content'];
 
     //then he can change the content
-    echo "<form action='change_msg_content.php?msg_id=" . $msg_id . "' method='POST'>
+    echo "  <h1> Change the content of your message </h1>
+    
+            <form action='change_msg_content.php?msg_id=" . $msg_id . "' method='POST'>
 
-    <textarea cols='120' rows='5' name='content'>" .  $content . "</textarea>
+                <textarea cols='70' rows='5' name='content'>" .  $content . "</textarea>
 
-    <button type='submit'>SEND</button>
+                <br><br>
 
-    </form>";
+                <button type='submit'>SEND</button>
+
+            </form>";
 
 
     
