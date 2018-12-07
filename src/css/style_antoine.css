@@ -1,21 +1,6 @@
 body {
   height: 100%;
 }
-.grey {
-    /*background-color :grey;*/
-    min-width: 140px;
-    overflow: auto;
-}
-
-.pink {
-    /*background-color :pink;*/
-    min-width: 140px;
-}
-
-.blue {
-    /*background-color :blue;*/
-    min-width: 140px;
-}
 
 .lightgrey {
     background-color: lightgrey;
@@ -96,6 +81,7 @@ body {
 .send {
     height: 20%;
     overflow: auto;
+    background-color: lightgrey;  
 }
 
 .toggle {
@@ -115,4 +101,8 @@ body {
 .emo_btn{
     background-color: rgba(0, 0, 0, 0);
     border: none;
+}
+
+.col-6 {
+    padding: 0;
 }

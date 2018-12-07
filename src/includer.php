@@ -6,7 +6,9 @@ $cur_mem_psd = $_SESSION['pseudo'];
 ?>
 
 <!DOCTYPE html>
+
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,32 +17,35 @@ $cur_mem_psd = $_SESSION['pseudo'];
     <link rel="stylesheet" href="css/style_antoine.css">
     <title>Inclpickertest</title>
 </head>
+
 <body>
     <div class="container-fluid global-cont row">
-        <div class="col-3 grey pck-pnl">
-            <form  method='POST'>
-                <br>
-                <?php
-                    include 'picker.php';
-                ?>
-                <br>
-            </form>
-        </div>              
-        <div class="col-6">
-            <div class="col-auto pink central">
-                <form method='POST'>   
+        <div class="col-3">
+            <div class="col-auto pck-pnl">
+                <form  method='POST'>
                     <br>
-                    <?php
-                        include 'central.php';
-                    ?>
+                        <?php
+                            include 'picker.php';
+                        ?>
                     <br>
                 </form>
             </div>
-            <div class="blue send">
+        </div>              
+        <div class="col-6">
+            <div class="col-auto central">
+                <form method='POST'>   
+                    <br>
+                        <?php
+                            include 'central.php';
+                        ?>
+                    <br>
+                </form>
+            </div>
+            <div class="send">
                 <br>
-                <?php
-                    include 'create_msg.php';
-                ?>
+                    <?php
+                        include 'create_msg.php';
+                    ?>
                 <br>
             </div>
         </div>  
