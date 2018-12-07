@@ -2,39 +2,38 @@
 
 session_start();
 
-
-/*
-echo "post - conv reg id = " . $_POST['conv_reg_id'] . "<br>";
-echo "session - conv reg id = " . $_SESSION['conv_reg_id'] . "<br>";
-echo "session - temp conv reg id = " . $_SESSION['temp_conv_reg_id'] . "<br>";
-echo "post - oth_mem_id = " . $_POST['oth_mem_id'] . "<br>";
-*/
-
 require_once 'db_param.php';
 
+
+// Reinit session variables 
+//-------------------------
+
+// if $POST['oth_mem_id'] is sent from picker.php 
 if (isset($_POST['oth_mem_id'])) {
     
+    // then reinit $_SESSION['conv_reg_id']
     $_SESSION['conv_reg_id'] = null;
 
+    // if active_user_id is smaller than other_member_id
     if ($_SESSION['id'] < $_POST['oth_mem_id']) {
         
+        // then affect $_SESSION['particip_id'] as active_user_id + " " + oth_mem_id
         $_SESSION['particip_id'] = $_SESSION['id'] . " " . $_POST['oth_mem_id'];
-        
+    
+    // else (if oth_mem_id is smaller than active_user_id)
     } else {
 
+        // then affect $_SESSION['particip_id'] as  + " " oth_mem_id + active_user_id
         $_SESSION['particip_id'] = $_POST['oth_mem_id'] . " " . $_SESSION['id'];
 
     } 
 
+// else if no new choice from picker panel 
+// and $POST['conv_reg_id'] is sent from send_msg.php 
 } elseif (isset($_POST['conv_reg_id'])) {    
 
     $_SESSION['conv_reg_id'] = $_POST['conv_reg_id'];  
-    
 
-} elseif (isset($_SESSION['temp_conv_reg_id'])) { 
-
-    $_SESSION['conv_reg_id'] = $_SESSION['temp_conv_reg_id'];
-   
 } 
 
 
