@@ -49,8 +49,11 @@ try {
     $q_messages="SELECT * FROM messages WHERE conv_reg_id ='" . $_SESSION['conv_reg_id'] ."'";
     $res4 = $db->query($q_messages)->fetchAll(PDO::FETCH_ASSOC);
 
+
     // Loop through the messages in this conversation 
     foreach($res4 as $row) {
+
+        $content = $row['content'];
 
         // if the message was sent by the active user
         if($row['owner_id'] == $cur_mem_id) {
@@ -80,7 +83,13 @@ try {
             // (and set $_GET['msg_id'] = id of the current message)
             // the link opens a new small window (therefore the javascript code) 
             echo "<div class='toggle'><a href='msg_edit.php?msg_id=" . $row['id'] .
-            "' onClick='showPopup(this.href);return(false);'><img class='icons' src='uploads/pencil.png' alt='smiley'></a></div></div>";
+            "' onClick='showPopup(this.href);return(false);'><img class='icons' src='uploads/pencil.png' alt='pencil'></a></div>";
+
+            // Then display the link to delete the message 
+            // (and set $_GET['msg_id'] = id of the current message)
+            // the link opens a new small window (therefore the javascript code) 
+            echo "<div class='toggle'><a href='msg_delete.php?msg_id=" . $row['id'] . 
+            "'><img class='icons' src='uploads/bin.png' alt='bin'></a></div></div>";
 
         // else if the message was sent by the other user
         } else {
@@ -108,13 +117,7 @@ try {
             // (and set $_GET['msg_id'] = id of the current message)
             // the link opens a new small window (therefore the javascript code) 
             echo "</div><div class='row'><div class='toggle'><a href='emojis.php?msg_id=" . $row['id'] . 
-            "' onClick='showPopup(this.href);return(false);'><img class='icons' src='uploads/smiley.png' alt='smiley'></a></div>";
-
-            // Then display the link to edit the message 
-            // (and set $_GET['msg_id'] = id of the current message)
-            // the link opens a new small window (therefore the javascript code) 
-            echo "<div class='toggle'><a href='msg_edit.php?msg_id=" . $row['id'] .
-            "' onClick='showPopup(this.href);return(false);'><img class='icons' src='uploads/pencil.png' alt='smiley'></a></div></div>";
+            "' onClick='showPopup(this.href);return(false);'><img class='icons' src='uploads/smiley.png' alt='smiley'></a></div></div>";
 
         }
     }    
