@@ -39,23 +39,25 @@ try {
         $q_msg="INSERT INTO messages (owner_id, conv_reg_id, time, content) VALUES ('$cur_mem_id', '$conv_reg_id', '$create_time', '$content')";
         $db->exec($q_msg);
 
-        
+    // else start new conversation    
     } else {
 
-        // créer nouvelle conversation
+        // insert new in conv_reg table
         $q_conv_reg_id="INSERT INTO conv_reg (num_particip, creation_time, particip_id) VALUES (2, '$create_time', '$particip_id')";
         $db->exec($q_conv_reg_id);
 
-        // Attribuer son conv_reg_id à la variable $conv_reg_id
+        // retreive the new conv_reg id from db 
         $q_conv_reg_id_2 = "SELECT id FROM conv_reg WHERE particip_id ='" . $particip_id .  "'";
         $res = $db->query($q_conv_reg_id_2)->fetchAll();
+        
+        // and assign its value to $conv_reg_id
         $conv_reg_id = $res[0][0];
 
-        // insérer message dans cette conv
+        // then insert new message in the new conversation
         $q_msg_2="INSERT INTO messages (owner_id, conv_reg_id, time, content) VALUES ('$cur_mem_id', '$conv_reg_id', '$create_time', '$content')";
         $db->exec($q_msg_2);
 
-        //Réaffectation de la variable de session
+        // and reaffect the new conv_reg_id to the session variable
         $_SESSION['conv_reg_id'] = $conv_reg_id;
 
     }
