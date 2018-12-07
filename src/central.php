@@ -54,13 +54,56 @@ try {
     foreach($res4 as $row) {
 
         $content = $row['content'];
+        $date = $row['time'];
 
         // if the message was sent by the active user
         if($row['owner_id'] == $cur_mem_id) {
             
             // Display the active user pseudo + the content of the message
-            echo "<div class='col-auto'><strong> ". $cur_mem_psd . 
-            "</strong></div><div class='col-auto lightblue'>" . $row['content'] . "<br>" ;
+            echo    "<div class='row justify-content-center grey'>" .
+                        $date . 
+                    "</div>
+                    <div class='row justify-content-between'>
+                        <span class='col-auto'>
+                            <strong> ". $cur_mem_psd . "</strong> said : 
+                        </span>";
+                        
+            // Then display the link to add emoji reaction 
+            // (and set $_GET['msg_id'] = id of the current message)
+            // the link opens a new small window (therefore the javascript code) 
+            echo        "<span class='col-auto'>
+                            <span class='toggle'>
+                                <a href='emojis.php?msg_id=" . $row['id'] . "' onClick='showPopup(this.href);return(false);'>
+                                    <img class='icons' src='uploads/smiley.png' alt='smiley'>
+                                </a>
+                            </span>";
+
+            // Then display the link to edit the message 
+            // (and set $_GET['msg_id'] = id of the current message)
+            // the link opens a new small window (therefore the javascript code) 
+                echo        "<span class='toggle'>
+                                <a href='msg_edit.php?msg_id=" . $row['id'] . "' onClick='showPopup(this.href);return(false);'>
+                                    <img class='icons' src='uploads/pencil.png' alt='pencil'>
+                                </a>
+                            </span>";
+
+            // Then display the link to delete the message 
+            // (and set $_GET['msg_id'] = id of the current message)
+            // the link opens a new small window (therefore the javascript code) 
+                echo        "<span class='toggle'>
+                                <a href='msg_delete.php?msg_id=" . $row['id'] . "'>
+                                    <img class='icons' src='uploads/bin.png' alt='bin'>
+                                </a>
+                            </span>
+                        </span>
+                    </div>";
+        
+            
+            echo    "<div class='col-auto lightblue'>" . 
+                        $row['content'] . 
+                        "<br>" .                        
+                    "</div>
+                    <div class='row ml'>";
             
             // Check if there was an emoji reaction
             $q_emo = "SELECT * FROM emo_react WHERE msg_id ='" . $row['id'] . "'";
@@ -73,23 +116,8 @@ try {
                 echo "<img class='icons' src='" . $emo['emo_path'] . "' title='" . $emo['usr_pseudo'] . "' alt='emo' />";
             }
 
-            // Then display the link to add emoji reaction 
-            // (and set $_GET['msg_id'] = id of the current message)
-            // the link opens a new small window (therefore the javascript code) 
-            echo "</div><div class='row'><div class='toggle'><a href='emojis.php?msg_id=" . $row['id'] . 
-            "' onClick='showPopup(this.href);return(false);'><img class='icons' src='uploads/smiley.png' alt='smiley'></a></div>";
-
-            // Then display the link to edit the message 
-            // (and set $_GET['msg_id'] = id of the current message)
-            // the link opens a new small window (therefore the javascript code) 
-            echo "<div class='toggle'><a href='msg_edit.php?msg_id=" . $row['id'] .
-            "' onClick='showPopup(this.href);return(false);'><img class='icons' src='uploads/pencil.png' alt='pencil'></a></div>";
-
-            // Then display the link to delete the message 
-            // (and set $_GET['msg_id'] = id of the current message)
-            // the link opens a new small window (therefore the javascript code) 
-            echo "<div class='toggle'><a href='msg_delete.php?msg_id=" . $row['id'] . 
-            "'><img class='icons' src='uploads/bin.png' alt='bin'></a></div></div>";
+                echo "</div>
+                     <br>";
 
         // else if the message was sent by the other user
         } else {
@@ -99,9 +127,33 @@ try {
             $res5 = $db->query($q_user)->fetchAll(PDO::FETCH_ASSOC);
             
             // Display the other member pseudo + the content of the message
-            echo "<div class='col-auto'><strong> ". $res5[0]['pseudo'] . 
-            "</strong></div><div class='col-auto lightgrey'>" . $row['content'] . "<br>" ;
+            echo    "<div class='row justify-content-center grey'>" . 
+                        $date . 
+                    "</div>
+                    <div class='row justify-content-between'>
+                        <span class='col-auto'>
+                            <strong> ". $res5[0]['pseudo'] . "</strong> said : 
+                        </span>";
             
+            // Then display the link to add emoji reaction 
+            // (and set $_GET['msg_id'] = id of the current message)
+            // the link opens a new small window (therefore the javascript code) 
+            echo "      <span class='col-auto'>
+                            <span class='toggle'>
+                                <a href='emojis.php?msg_id=" . $row['id'] . "' onClick='showPopup(this.href);return(false);'>
+                                    <img class='icons' src='uploads/smiley.png' alt='smiley'>
+                                </a>
+                            </span>
+                        </span>
+                    </div>";
+
+
+            echo    "<div class='col-auto lightgrey'>" . 
+                        $row['content'] . 
+                        "<br>" .                        
+                    "</div>
+                    <div class='row ml'>";
+                    
             // Check if there was an emoji reaction
             $q_emo = "SELECT * FROM emo_react WHERE msg_id ='" . $row['id'] . "'";
             $res5 = $db->query($q_emo)->fetchAll();
@@ -113,12 +165,9 @@ try {
                 echo "<img class='icons' src='" . $emo['emo_path'] . "' title='" . $emo['usr_pseudo'] . "' alt='emo' />";
             }
 
-            // Then display the link to add emoji reaction 
-            // (and set $_GET['msg_id'] = id of the current message)
-            // the link opens a new small window (therefore the javascript code) 
-            echo "</div><div class='row'><div class='toggle'><a href='emojis.php?msg_id=" . $row['id'] . 
-            "' onClick='showPopup(this.href);return(false);'><img class='icons' src='uploads/smiley.png' alt='smiley'></a></div></div>";
-
+                echo "</div>
+                     <br>";
+        
         }
     }    
     

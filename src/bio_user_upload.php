@@ -37,7 +37,7 @@
             <button type="submit" name="submit">Envoyer</button>
         </form>
         <br>
-        <form action='user_home.php'>
+        <form action='includer.php'>
             <input type='submit' value="Finaliser l'inscription" />
         </form>
         <?php

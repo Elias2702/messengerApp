@@ -11,9 +11,10 @@ require_once 'db_param.php';
 // $smtp = 'mailcatcher';
 // $port = 25;
 
-header('Refresh: 2; index.php');
+header('Refresh: 3; index.php');
 
-$msg = 'Dear user, please find hereafter your password : ';
+$msg = 'Dear user, please click the following link to reset your password : 
+        localhost:8000';
 $email = $_POST['email'];
 
 try {
@@ -40,4 +41,6 @@ try {
 mail($email,"Password",$msg);
 
 echo "We've sent an email to ". $email;
+
+echo $msg;
 ?>

@@ -2,6 +2,10 @@ body {
   height: 100%;
 }
 
+.grey {
+    color: grey;
+}
+
 .lightgrey {
     background-color: lightgrey;
     overflow: none;
@@ -9,6 +13,11 @@ body {
     margin-right: 10px;
     border-radius: 10px;
     padding: 2px 5px 3px 5px;
+    word-wrap: break-word;
+}
+
+.wb {
+    overflow: wrap;
     word-wrap: break-word;
 }
 
@@ -22,11 +31,19 @@ body {
     word-wrap: break-word;
 }
 
+.ml {
+    margin-left: 22px;
+}
+
 .errmsg {
     color: red;
     position: absolute;
     margin-left : 250px;
     margin-top : -30px;
+}
+
+.pink {
+    background-color: pink;
 }
 
 .pro_pic{
@@ -85,7 +102,7 @@ body {
 }
 
 .toggle {
-    opacity: 0;
+    opacity: 0.5;
 }
 
 .toggle:hover {
@@ -105,4 +122,8 @@ body {
 
 .col-6 {
     padding: 0;
+}
+
+.no-pad-right {
+    margin-right: 0;
 }

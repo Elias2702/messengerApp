@@ -44,7 +44,7 @@ try {
     if(!$mailexists) {
         header('Refresh: 2; index.php');
     } elseif($pass_check) {
-        header("Refresh: 2; url=user_home.php");
+        header("Refresh: 2; url=includer.php");
     } else {
         header("Refresh: 2; url=index.php");
     }
