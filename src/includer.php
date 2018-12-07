@@ -46,6 +46,8 @@ $cur_mem_psd = $_SESSION['pseudo'];
         </div>  
     </div>
 
+<!-- defines the JS function that is used in central.php to display emojis.php and msg_edit.php 
+on a new small window --> 
 <script type="text/javascript">
 function showPopup(url) {
 newwindow=window.open(url,'name','height=190,width=520,top=200,left=300,resizable');

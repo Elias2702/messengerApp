@@ -71,13 +71,13 @@ try {
             }
 
             // Then display the link to add emoji reaction 
-            // (and set $_GET['id'] = id of the current message)
+            // (and set $_GET['msg_id'] = id of the current message)
             // the link opens a new small window (therefore the javascript code) 
             echo "</div><div class='row'><div class='toggle'><a href='emojis.php?msg_id=" . $row['id'] . 
             "' onClick='showPopup(this.href);return(false);'><img class='icons' src='uploads/smiley.png' alt='smiley'></a></div>";
 
             // Then display the link to edit the message 
-            // (and set $_GET['id'] = id of the current message)
+            // (and set $_GET['msg_id'] = id of the current message)
             // the link opens a new small window (therefore the javascript code) 
             echo "<div class='toggle'><a href='msg_edit.php?msg_id=" . $row['id'] .
             "' onClick='showPopup(this.href);return(false);'><img class='icons' src='uploads/pencil.png' alt='smiley'></a></div></div>";
@@ -105,13 +105,13 @@ try {
             }
 
             // Then display the link to add emoji reaction 
-            // (and set $_GET['id'] = id of the current message)
+            // (and set $_GET['msg_id'] = id of the current message)
             // the link opens a new small window (therefore the javascript code) 
             echo "</div><div class='row'><div class='toggle'><a href='emojis.php?msg_id=" . $row['id'] . 
             "' onClick='showPopup(this.href);return(false);'><img class='icons' src='uploads/smiley.png' alt='smiley'></a></div>";
 
             // Then display the link to edit the message 
-            // (and set $_GET['id'] = id of the current message)
+            // (and set $_GET['msg_id'] = id of the current message)
             // the link opens a new small window (therefore the javascript code) 
             echo "<div class='toggle'><a href='msg_edit.php?msg_id=" . $row['id'] .
             "' onClick='showPopup(this.href);return(false);'><img class='icons' src='uploads/pencil.png' alt='smiley'></a></div></div>";
