@@ -55,10 +55,19 @@ try {
                     // display link (reload whole includer.php)
                     // ( = transparent submit button with $_POST['conv_reg_id']
                     // in picker panel to select conversation, with other member picture
-                    echo "<button class='row convbtn' type='submit' value='" . $res2 . "' name='conv_reg_id' ><img class='pro_pic' src='" . $row['picture'] . "'alt='profile picture'>";
+                    echo    "<button class='row convbtn' type='submit' value='" . $res2 . "' name='conv_reg_id' >
+                                <img class='pro_pic' src='" . $row['picture'] . "'alt='profile picture'>";
                     
                     // and with other member pseudo and last message in that conversation
-                    echo "<div class='col-auto lightgrey'><strong> ". $row['pseudo'] . "</strong><br>" . $res3[0][2] . " </div></button><br>";
+                    echo        "<div class='col-auto'>
+                                    <div class='row ml'>
+                                        <strong> ". $row['pseudo'] . "</strong>
+                                    </div>
+                                    <div class='col-auto lightgrey'>" . 
+                                        $res3[0][2] . 
+                                    "</div>
+                                </div>
+                            </button><br>";
 
                 //else if other member has no profile picture
                 } else {

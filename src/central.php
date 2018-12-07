@@ -63,15 +63,16 @@ try {
             echo    "<div class='row justify-content-center grey'>" .
                         $date . 
                     "</div>
+                    <div class='mr'>
                     <div class='row justify-content-between'>
-                        <span class='col-auto'>
-                            <strong> ". $cur_mem_psd . "</strong> said : 
+                        <span class='col-auto ml'>
+                            <strong> ". $cur_mem_psd . "</strong> 
                         </span>";
-                        
+                            
             // Then display the link to add emoji reaction 
             // (and set $_GET['msg_id'] = id of the current message)
             // the link opens a new small window (therefore the javascript code) 
-            echo        "<span class='col-auto'>
+            echo        "<span class='col-auto ml'>
                             <span class='toggle'>
                                 <a href='emojis.php?msg_id=" . $row['id'] . "' onClick='showPopup(this.href);return(false);'>
                                     <img class='icons' src='uploads/smiley.png' alt='smiley'>
@@ -90,7 +91,7 @@ try {
             // Then display the link to delete the message 
             // (and set $_GET['msg_id'] = id of the current message)
             // the link opens a new small window (therefore the javascript code) 
-                echo        "<span class='toggle'>
+                echo        "<span class='toggle mr'>
                                 <a href='msg_delete.php?msg_id=" . $row['id'] . "'>
                                     <img class='icons' src='uploads/bin.png' alt='bin'>
                                 </a>
@@ -117,6 +118,7 @@ try {
             }
 
                 echo "</div>
+                     </div>
                      <br>";
 
         // else if the message was sent by the other user
@@ -130,15 +132,16 @@ try {
             echo    "<div class='row justify-content-center grey'>" . 
                         $date . 
                     "</div>
+                    <div class='mr'>
                     <div class='row justify-content-between'>
-                        <span class='col-auto'>
-                            <strong> ". $res5[0]['pseudo'] . "</strong> said : 
+                        <span class='col-auto ml'>
+                            <strong> ". $res5[0]['pseudo'] . "</strong> 
                         </span>";
             
             // Then display the link to add emoji reaction 
             // (and set $_GET['msg_id'] = id of the current message)
             // the link opens a new small window (therefore the javascript code) 
-            echo "      <span class='col-auto'>
+            echo "      <span class='col-auto mr'>
                             <span class='toggle'>
                                 <a href='emojis.php?msg_id=" . $row['id'] . "' onClick='showPopup(this.href);return(false);'>
                                     <img class='icons' src='uploads/smiley.png' alt='smiley'>
@@ -166,6 +169,7 @@ try {
             }
 
                 echo "</div>
+                     </div>
                      <br>";
         
         }

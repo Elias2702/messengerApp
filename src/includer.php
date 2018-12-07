@@ -20,7 +20,7 @@ $cur_mem_psd = $_SESSION['pseudo'];
 
 <body>
     <div class="container-fluid global-cont row">
-        <div class="col-3">
+        <div class="col-3 no-pad-right">
             <div class="col-auto pck-pnl">
                 <form  method='POST'>
                     <br>
@@ -49,6 +49,8 @@ $cur_mem_psd = $_SESSION['pseudo'];
                 <br>
             </div>
         </div>  
+        <div class='col-3 no-pad-right'>
+        </div>
     </div>
 
 <!-- defines the JS function that is used in central.php to display emojis.php and msg_edit.php 

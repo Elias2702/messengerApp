@@ -3,7 +3,8 @@ body {
 }
 
 .grey {
-    color: grey;
+    color: rgb(173, 169, 169);
+    font-size: 0.7em;
 }
 
 .lightgrey {
@@ -35,6 +36,10 @@ body {
     margin-left: 22px;
 }
 
+.mr {
+    margin-right: 22px;
+}
+
 .errmsg {
     color: red;
     position: absolute;
@@ -63,7 +68,7 @@ body {
 
 .pck-pnl {
     height: 100%;
-    overflow: auto;
+    overflow:auto;
     padding: 20px;
 
 }
@@ -112,7 +117,7 @@ body {
 .icons {
     width: 20px;
     height: 20px;
-    margin: 10px;
+    margin: 4px;
 }
 
 .emo_btn{
@@ -125,5 +130,6 @@ body {
 }
 
 .no-pad-right {
+    padding-right: 0;
     margin-right: 0;
 }
