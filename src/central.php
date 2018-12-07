@@ -59,11 +59,11 @@ try {
                 echo "<img class='icons' src='" . $emo['emo_path'] . "' title='" . $emo['usr_pseudo'] . "' alt='emo' />";
             }
 
-            echo "</div><div class='toggle'><a href='emojis.php?msg_id=" . $row['id'] . 
+            echo "</div><div class='row'><div class='toggle'><a href='emojis.php?msg_id=" . $row['id'] . 
             "' onClick='showPopup(this.href);return(false);'><img class='icons' src='uploads/smiley.png' alt='smiley'></a></div>";
 
             echo "<div class='toggle'><a href='msg_edit.php?msg_id=" . $row['id'] .
-            "' onClick='showPopup(this.href);return(false);'><img class='icons' src='uploads/pencil.png' alt='smiley'></a></div>";
+            "' onClick='showPopup(this.href);return(false);'><img class='icons' src='uploads/pencil.png' alt='smiley'></a></div></div>";
 
 
         } else {
@@ -81,11 +81,12 @@ try {
                 echo "<img class='icons' src='" . $emo['emo_path'] . "' title='" . $emo['usr_pseudo'] . "' alt='emo' />";
             }
 
-            echo "</div><div class='toggle'><a href='emojis.php?msg_id=" . $row['id'] . 
+           
+            echo "</div><div class='row'><div class='toggle'><a href='emojis.php?msg_id=" . $row['id'] . 
             "' onClick='showPopup(this.href);return(false);'><img class='icons' src='uploads/smiley.png' alt='smiley'></a></div>";
 
             echo "<div class='toggle'><a href='msg_edit.php?msg_id=" . $row['id'] .
-            "' onClick='showPopup(this.href);return(false);'><img class='icons' src='uploads/pencil.png' alt='smiley'></a></div>";
+            "' onClick='showPopup(this.href);return(false);'><img class='icons' src='uploads/pencil.png' alt='smiley'></a></div></div>";
 
         }
     }    
