@@ -3,6 +3,7 @@ session_start();
 $cur_mem_id = $_SESSION['id'];
 $cur_mem_psd = $_SESSION['pseudo'];
 
+
 ?>
 
 <!DOCTYPE html>
@@ -42,6 +43,14 @@ $cur_mem_psd = $_SESSION['pseudo'];
                     include 'create_msg.php';
                 ?>
                 <br>
+            </div>
+            <div>
+            <span> <form action="dsp_add_picker.php" style="display:inline;" >
+                <input type="submit" value="Add member" ></span>
+                </form>
+                <form action="leave_conv.php" method="post" style="display:inline;">
+                    <input type="submit" value="Leave Conversation">
+                </form></span>
             </div>
         </div>  
     </div>
