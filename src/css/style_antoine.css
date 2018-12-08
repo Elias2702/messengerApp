@@ -9,12 +9,11 @@ body {
 
 .lightgrey {
     background-color: lightgrey;
-    overflow: none;
-    margin-left: 20px;
-    margin-right: 10px;
+    overflow: wrap;
+    word-wrap: break-word;   
     border-radius: 10px;
     padding: 2px 5px 3px 5px;
-    word-wrap: break-word;
+
 }
 
 .wb {
@@ -24,7 +23,7 @@ body {
 
 .lightblue {
     background-color: lightblue;
-    overflow: none;
+    overflow: wrap;
     margin-left: 20px;
     margin-right: 10px;
     border-radius: 10px;
@@ -52,58 +51,73 @@ body {
 }
 
 .pro_pic{
-    width: 50px;
-    height: 50px;
     border-radius: 100px;
-    margin-left: 20px;
-    margin-right: 10px;
-    margin-bottom: 10px;
+    width: 100px;
+    height: 100px;
 }
 
 .global-cont {
     width: 100vw;
     height: 100vh;
     padding: 0px;
+    overflow: hidden;
 }
 
 .pck-pnl {
-    height: 100%;
-    overflow:auto;
+    height: 90%;
+    overflow-x:none;
+    overflow-y:auto;
     padding: 20px;
 
+}
+
+.ctr-pnl {
+    height: 95%;
+    overflow: none;
+    padding: 20px;
 }
 
 .convbtn {
     background-color: rgba(0, 0, 0, 0);
     border: none;
+
 }
 
-
-.central {
-    height: 80%;
+.header {
+    height: 5%;
     overflow: auto;
-}
-
-.send {
-    height: 20%;
-    overflow: auto;
+    background-color: skyblue;
 }
 
 .pck-pnl {
-    height: 100%;
-    overflow: auto;
-    padding: 20px;
+    height: 95%;
+    overflow: hidden;
+    border-right: 1px solid lightgrey;   
 }
 
+.pck-pnl:hover {
+    overflow: auto;
+}    
+
 .central {
-    height: 80%;
+    height: 93%;
+    overflow: hidden;
+    border-right: 1px solid lightgrey;
+    padding-bottom: 10px;
+}
+
+.central:hover {
     overflow: auto;
 }
 
 .send {
-    height: 20%;
-    overflow: auto;
+    height: 7%;
+    overflow: none;
     background-color: lightgrey;  
+}
+
+.send:active {
+    border: 1px solid lightgrey; 
 }
 
 .toggle {
@@ -129,7 +143,75 @@ body {
     padding: 0;
 }
 
-.no-pad-right {
-    padding-right: 0;
-    margin-right: 0;
+.no-padding {
+    padding: 0;
+}
+
+.no-margin {
+    margin: 0;
+}
+
+.textarea{
+    width:100%;
+    height:100%;
+    overflow: hidden;
+    border: 1px solid lightgrey;
+    border-left: 0;
+    padding-left: 15px;
+}
+
+.textarea:hover {
+    overflow: auto;
+
+}
+
+.fw{
+    height:100%;
+    width:100%;
+}
+
+.send_btn{
+    width: 100%;
+    height: 100%;
+    border: 1px solid lightgrey;
+    border-left: 0;
+    background-color: #fff;  
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: white; 
+    border-radius: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track:hover {
+    background: rgb(236, 233, 233); 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgb(185, 185, 185); 
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(139, 139, 139);
+    width: 8px;
+}
+
+
+
+::placeholder {
+    color: rgb(194, 194, 194); 
+}
+
+input:hover::placeholder {
+    color: rgb(138, 138, 138); 
 }

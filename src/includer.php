@@ -19,9 +19,16 @@ $cur_mem_psd = $_SESSION['pseudo'];
 </head>
 
 <body>
-    <div class="container-fluid global-cont row">
-        <div class="col-3 no-pad-right">
-            <div class="col-auto pck-pnl">
+
+   
+
+    <div class="container-fluid global-cont row no-padding no-margin">
+        
+        <header class="container-fluid no-padding no-margin header">balblabliuhkseuyv
+        </header>
+    
+        <div class="col-xs-1 col-sm-2 col-md-3 no-padding no-margin pck-pnl">
+    
                 <form  method='POST'>
                     <br>
                         <?php
@@ -29,27 +36,30 @@ $cur_mem_psd = $_SESSION['pseudo'];
                         ?>
                     <br>
                 </form>
-            </div>
+
         </div>              
-        <div class="col-6">
-            <div class="col-auto central">
+        <div class="col-xs-10 col-sm-8 col-md-6 no-padding no-margin ctr-pnl">
+            <div class="col-auto central scrolldown">
                 <form method='POST'>   
                     <br>
                         <?php
                             include 'central.php';
                         ?>
-                    <br>
+                    <br>                    
                 </form>
             </div>
-            <div class="send">
-                <br>
+        
+            <div class="send no-padding no-margin">
+                
                     <?php
                         include 'create_msg.php';
                     ?>
-                <br>
+                
             </div>
+            
         </div>  
-        <div class='col-3 no-pad-right'>
+        <div class='col-xs-1 col-sm-2 col-md-3 no-padding no-margin'>
+            blabla
         </div>
     </div>
 

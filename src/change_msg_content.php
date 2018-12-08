@@ -1,11 +1,10 @@
 <?php
 
-session_start();
-
 require_once 'db_param.php';
 
 // retrieve new content from message
 $new_content = $_POST['content'];
+// retrieve msg id from url
 $msg_id = $_GET['msg_id'];
 
 try {

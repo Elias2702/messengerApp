@@ -61,7 +61,7 @@ try {
         $_SESSION['conv_reg_id'] = $conv_reg_id;
 
     }
-
+    
 }catch (Exception $ex) {
     echo 'ERROR DBASE CONNECTION '.$ex->getMessage();
 } 

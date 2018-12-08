@@ -13,8 +13,17 @@ require_once 'db_param.php';
 
 header('Refresh: 3; index.php');
 
-$msg = 'Dear user, please click the following link to reset your password : 
-        localhost:8000';
+
+$user_id = $_SESSION['d']
+$options = [
+    'cost' => 11,
+    'salt' => random_bytes(22),
+];
+$hash_pass = password_hash($pass, PASSWORD_BCRYPT, $options);
+
+$msg = "Dear user, please click the following link to reset your password : 
+        localhost:8000/reset_pass.php?id=" . . "&check=" . . "";
+
 $email = $_POST['email'];
 
 try {

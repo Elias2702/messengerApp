@@ -63,10 +63,10 @@ try {
             echo    "<div class='row justify-content-center grey'>" .
                         $date . 
                     "</div>
-                    <div class='mr'>
+                    <div>
                     <div class='row justify-content-between'>
                         <span class='col-auto ml'>
-                            <strong> ". $cur_mem_psd . "</strong> 
+                            <strong> ". $cur_mem_psd . "</strong> said :
                         </span>";
                             
             // Then display the link to add emoji reaction 
@@ -132,16 +132,16 @@ try {
             echo    "<div class='row justify-content-center grey'>" . 
                         $date . 
                     "</div>
-                    <div class='mr'>
+                    <div>
                     <div class='row justify-content-between'>
                         <span class='col-auto ml'>
-                            <strong> ". $res5[0]['pseudo'] . "</strong> 
+                            <strong> ". $res5[0]['pseudo'] . "</strong> said :
                         </span>";
             
             // Then display the link to add emoji reaction 
             // (and set $_GET['msg_id'] = id of the current message)
             // the link opens a new small window (therefore the javascript code) 
-            echo "      <span class='col-auto mr'>
+            echo "      <span class='col-auto ml mr'>
                             <span class='toggle'>
                                 <a href='emojis.php?msg_id=" . $row['id'] . "' onClick='showPopup(this.href);return(false);'>
                                     <img class='icons' src='uploads/smiley.png' alt='smiley'>
@@ -175,6 +175,7 @@ try {
         }
     }    
     
+    echo "<a id='bottom'></a>";
 
 } catch (Exception $ex) {
     echo 'ERROR DBASE CONNECTION '.$ex->getMessage();
