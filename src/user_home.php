@@ -2,6 +2,13 @@
 
 session_start();
 
+
+require_once './func php/f_db_con.php';
+$db_cnct = dbase_con();
+require_once './func php/f_get_contacts.php';
+require_once './func php/f_get_convers_reg.php';
+require_once './func php/f_dsp_element.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +21,7 @@ session_start();
     </head>
     <body>
     
-    <?php require_once 'db_param.php';
+    <?php //require_once 'db_param.php';
 
             //require_once 'ins_conv_msg.php';      
             $cur_mem = $_SESSION['id'];
@@ -40,15 +47,16 @@ session_start();
                                 echo "<option value='" . $row['id'] . "' label='" .$row['pseudo']. "'> ". $row['pseudo'] ."</option>";     
                             }
                         }
+                    }catch (Exception $ex) {
+                        echo 'ERROR DBASE CONNECTION '.$ex->getMessage();
+                    } 
                         ?>
                     </select>
                     </legend>
                     </div>
             
         <?php                
-            } catch (Exception $ex) {
-                echo 'ERROR DBASE CONNECTION '.$ex->getMessage();
-            }                       
+                                  
         ?>
                     <p></p>
                                                 
