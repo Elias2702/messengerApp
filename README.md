@@ -1,3 +1,11 @@
+Notes dévelopeurs:
+
+Le parcours utilisateur commence par index.php. Là, l'utilisateur peut se login avec email et mot-de-passe, ou créer un compte. La création d'un compte est structurée en trois étapes: 1. enregistrement des données basiques 2. chargement d'une image perso 3. chargement d'un petit texte biographique. Les deux dernières étapes sont facultatives.
+L'utilisateur est dirigé vers la page de chat principale (includer.php) automatiquement lorsqu'il/elle se login, ou lorsqu'il/elle finalise son inscription.
+L'utilisateur peut modifier ses paramètres de compte dans user_settings.php.
+
+
+
 # PHP: messenger
 
 > Simple messenger in PHP
