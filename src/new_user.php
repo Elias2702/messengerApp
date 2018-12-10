@@ -11,7 +11,7 @@ require_once 'db_param.php';
 require 'user_class.php';
 
     // After execution the user is sent to the user_home page  -
-    header("Refresh:2; url=img_user_upload.php");
+    header("Refresh:0; url=img_user_upload.php");
 
     // Create variables with infos from SESSION (formulaire.php)
     $pn       = $_SESSION['prenom'] ;

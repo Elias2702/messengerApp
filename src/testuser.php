@@ -3,9 +3,9 @@
 // or back to the login page.
 
 
-session_start(); 
+session_start();
 
-// Calls connection params 
+// Calls connection params
 require_once 'db_param.php';
 require_once './class php/user_class.php';
 
@@ -24,11 +24,11 @@ try {
     // Set connection to the database
     $db_user = new PDO ($dsn, $user_db, $pass_db);
     $db_user -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    
+
     // Extracts id, email & pass
-    $q_user="SELECT id, prenom, nom, sexe, pseudo, email, pass FROM user" ;    
+    $q_user="SELECT id, prenom, nom, sexe, pseudo, email, pass FROM user" ;
     $result = $db_user->query($q_user)->fetchAll();
-    
+
     foreach ($result as $row) {
         if ($row['email'] == $email) {
 
@@ -69,17 +69,10 @@ try {
 /*<<<<<<< HEAD
     } elseif($pass == $passcheck) {
         header("Refresh: 2; url=chatt.php");
-=======*/
-    } elseif($pass_check) {
-        header("Refresh: 2; url=user_home.php");
-//>>>>>>> devantoine
-        echo 'Hello ' . $_SESSION['pseudo'];
-        var_dump($_SESSION['mem']);
     } else {
         header("Refresh: 2; url=index.php");
-        echo 'wrong password';
     }
-    
+
 
 } catch (Exception $ex) {
     echo 'ERROR DBASE CONNECTION '.$ex->getMessage();

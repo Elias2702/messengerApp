@@ -11,9 +11,19 @@ require_once 'db_param.php';
 // $smtp = 'mailcatcher';
 // $port = 25;
 
-header('Refresh: 2; index.php');
+header('Refresh: 3; index.php');
 
-$msg = 'Dear user, please find hereafter your password : ';
+
+$user_id = $_SESSION['d']
+$options = [
+    'cost' => 11,
+    'salt' => random_bytes(22),
+];
+$hash_pass = password_hash($pass, PASSWORD_BCRYPT, $options);
+
+$msg = "Dear user, please click the following link to reset your password : 
+        localhost:8000/reset_pass.php?id=" . . "&check=" . . "";
+
 $email = $_POST['email'];
 
 try {
@@ -40,4 +50,6 @@ try {
 mail($email,"Password",$msg);
 
 echo "We've sent an email to ". $email;
+
+echo $msg;
 ?>

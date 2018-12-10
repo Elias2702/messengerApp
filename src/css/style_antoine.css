@@ -1,0 +1,217 @@
+body {
+  height: 100%;
+}
+
+.grey {
+    color: rgb(173, 169, 169);
+    font-size: 0.7em;
+}
+
+.lightgrey {
+    background-color: lightgrey;
+    overflow: wrap;
+    word-wrap: break-word;   
+    border-radius: 10px;
+    padding: 2px 5px 3px 5px;
+
+}
+
+.wb {
+    overflow: wrap;
+    word-wrap: break-word;
+}
+
+.lightblue {
+    background-color: lightblue;
+    overflow: wrap;
+    margin-left: 20px;
+    margin-right: 10px;
+    border-radius: 10px;
+    padding: 2px 5px 3px 5px;
+    word-wrap: break-word;
+}
+
+.ml {
+    margin-left: 22px;
+}
+
+.mr {
+    margin-right: 22px;
+}
+
+.errmsg {
+    color: red;
+    position: absolute;
+    margin-left : 250px;
+    margin-top : -30px;
+}
+
+.pink {
+    background-color: pink;
+}
+
+.pro_pic{
+    border-radius: 100px;
+    width: 100px;
+    height: 100px;
+}
+
+.global-cont {
+    width: 100vw;
+    height: 100vh;
+    padding: 0px;
+    overflow: hidden;
+}
+
+.pck-pnl {
+    height: 90%;
+    overflow-x:none;
+    overflow-y:auto;
+    padding: 20px;
+
+}
+
+.ctr-pnl {
+    height: 95%;
+    overflow: none;
+    padding: 20px;
+}
+
+.convbtn {
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+
+}
+
+.header {
+    height: 5%;
+    overflow: auto;
+    background-color: skyblue;
+}
+
+.pck-pnl {
+    height: 95%;
+    overflow: hidden;
+    border-right: 1px solid lightgrey;   
+}
+
+.pck-pnl:hover {
+    overflow: auto;
+}    
+
+.central {
+    height: 93%;
+    overflow: hidden;
+    border-right: 1px solid lightgrey;
+    padding-bottom: 10px;
+}
+
+.central:hover {
+    overflow: auto;
+}
+
+.send {
+    height: 7%;
+    overflow: none;
+    background-color: lightgrey;  
+}
+
+.send:active {
+    border: 1px solid lightgrey; 
+}
+
+.toggle {
+    opacity: 0.5;
+}
+
+.toggle:hover {
+    opacity: 1;
+}
+
+.icons {
+    width: 20px;
+    height: 20px;
+    margin: 4px;
+}
+
+.emo_btn{
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+}
+
+.col-6 {
+    padding: 0;
+}
+
+.no-padding {
+    padding: 0;
+}
+
+.no-margin {
+    margin: 0;
+}
+
+.textarea{
+    width:100%;
+    height:100%;
+    overflow: hidden;
+    border: 1px solid lightgrey;
+    border-left: 0;
+    padding-left: 15px;
+}
+
+.textarea:hover {
+    overflow: auto;
+
+}
+
+.fw{
+    height:100%;
+    width:100%;
+}
+
+.send_btn{
+    width: 100%;
+    height: 100%;
+    border: 1px solid lightgrey;
+    border-left: 0;
+    background-color: #fff;  
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: white; 
+    border-radius: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track:hover {
+    background: rgb(236, 233, 233); 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgb(185, 185, 185); 
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(139, 139, 139);
+    width: 8px;
+}
+
+
+
+::placeholder {
+    color: rgb(194, 194, 194); 
+}
+
+input:hover::placeholder {
+    color: rgb(138, 138, 138); 
+}
