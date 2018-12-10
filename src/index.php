@@ -13,7 +13,7 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <title>User LOGIN</title>
         <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" type="text/css" href="css/style_login.css">
         <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500" rel="stylesheet">
     </head>
     <body class="text-center">
