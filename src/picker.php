@@ -55,20 +55,12 @@ try {
                     // display link (reload whole includer.php)
                     // ( = transparent submit button with $_POST['conv_reg_id']
                     // in picker panel to select conversation, with other member picture
-                    echo    "<button class='row convbtn no-padding no-margin' type='submit' value='" . $res2 . "' name='conv_reg_id'>
-                                <img class='col-sm-12 col-md-3 justify-items-center pro_pic' src='" . $row['picture'] . "'alt='profile picture'>";
-                    
+                    print "<button class='row convbtn' type='submit' value='" . $res2 . "' name='conv_reg_id' ><img class='pro_pic' src='" . $row['picture'] . "'alt='profile picture'>";
+
                     // and with other member pseudo and last message in that conversation
-                    echo        "<div class='d-none d-md-block col-auto'>
-                                    <div class='col-auto'>
-                                        <strong> ". $row['pseudo'] . "</strong>
-                                    </div>
-                                    <div class='col-auto lightgrey'>" . 
-                                        $res3[0][2] . 
-                                    "</div>
-                                </div>
-                            </button>
-                            <br>";
+
+                    print "<div class='col-auto lightgrey'><strong> ". $row['pseudo'] . "</strong><br>" . $res3[0][2] . " </div></button><br>";
+
 
                 //else if other member has no profile picture
                 } else {
@@ -76,19 +68,11 @@ try {
                     // display link (reload whole includer.php)
                     // ( = transparent submit button with $_POST['conv_reg_id']
                     // in picker panel to select conversation, with default member picture
-                    echo    "<button class='row convbtn no-padding no-margin' type='submit' value='" . $res2 . "' name='conv_reg_id'>
-                                <img class='col-sm-12 col-md-3 justify-items-center pro_pic' src='uploads/def_icon.png'alt='profile picture'>";
-                    
+                    echo "<button class='row convbtn' type='submit' value='" . $res2 . "' name='conv_reg_id' ><img class='pro_pic' src='uploads/def_icon.png'alt='profile picture'>";
+
                     // and with other member pseudo and last message in that conversation
-                    echo        "<div class='d-none d-md-flex col-auto'>
-                                    <div class='row'>
-                                        <strong> ". $row['pseudo'] . "</strong>
-                                    </div>
-                                    <div class='row lightgrey'>" .                                     
-                                        $res3[0][2] . 
-                                    "</div>
-                            </button>
-                            <br>";
+
+                    echo "<div class='col-auto lightgrey'><strong> ". $row['pseudo'] . "</strong><br>" . $res3[0][2] . " </div></button><br>";
 
                 }
 
@@ -102,16 +86,13 @@ try {
                     // display link (reload whole includer.php)
                     // ( = transparent submit button with $_POST['conv_reg_id']
                     // in picker panel to create new conversation, with other member picture
-                    echo    "<button class='row convbtn no-padding no-margin' type='submit' value='" . $row['id'] . "' name='oth_mem_id'>
-                                <img class='col-sm-12 col-md-3 justify-items-center pro_pic' src='" . $row['picture'] . "'alt='profile picture'>";
-                    
+                    echo "<button class='row convbtn' type='submit' value='" . $row['id'] . "' name='oth_mem_id' ><img class='pro_pic' src='" . $row['picture'] . "'alt='profile picture'>";
+
                     // and with other member pseudo and default message "start new conversation"
-                    echo        "<div class='d-none d-md-block col-md-9 lightgrey'>
-                                    <strong> ". $row['pseudo'] . "</strong><br> 
-                                    Start new conversation 
-                                </div>
-                            </button>
-                            <br>";
+                    echo "<div class='col-auto lightgrey'><strong> ". $row['pseudo'] . "</strong><br> Start new conversation </div></button><br>";
+
+
+        
 
                 //else if other member has no profile picture
                 } else {
@@ -119,16 +100,15 @@ try {
                     // display link (reload whole includer.php)
                     // ( = transparent submit button with $_POST['conv_reg_id']
                     // in picker panel to create new conversation, with default member picture
-                    echo    "<button class='row convbtn no-padding no-margin' type='submit' value='" . $row['id'] . "' name='oth_mem_id'>
-                                <img class='col-sm-12 col-md-3 justify-items-center pro_pic' src='uploads/def_icon.png'alt='profile picture'>";
-                    
+                    echo "<button class='row convbtn' type='submit' value='" . $row['id'] . "' name='oth_mem_id' ><img class='pro_pic' src='uploads/def_icon.png'alt='profile picture'>";
+
                     // and with other member pseudo and default message "start new conversation"
-                    echo        "<div class='d-none d-md-block col-md-9 lightgrey'>
-                                    <strong> ". $row['pseudo'] . "</strong><br> 
-                                    Start new conversation 
-                                </div>
-                            </button>
-                            <br>";
+
+                    echo "<div class='col-auto lightgrey'>
+                            <strong> ". $row['pseudo'] . "</strong><br> 
+                            Start new conversation 
+                         </div></button><br>";
+
 
                 }
 
@@ -144,3 +124,6 @@ try {
 
 
 ?>
+
+
+
