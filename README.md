@@ -1,3 +1,6 @@
+This is a team-assignment in the context of a web development training program.
+
+
 Notes dévelopeurs:
 
 Le parcours utilisateur commence par index.php. Là, l'utilisateur peut se login avec email et mot-de-passe, ou créer un compte. La création d'un compte est structurée en trois étapes: 1. enregistrement des données basiques 2. chargement d'une image perso 3. chargement d'un petit texte biographique. Les deux dernières étapes sont facultatives.
